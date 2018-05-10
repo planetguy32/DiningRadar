@@ -45,40 +45,42 @@ def make_food_dict(food_list):
 #   month: 06 (two digits representing month)
 #   day: 05 (two digits representing day)
 #   year: 2018 (four digits representing year)
-# locationNum: a number representing the location in the format 05 (two digits) chosen from the following list
-#   05 -- Cowell Stevenson Dining Hall
-#   20 -- Crown Merrill Dining Hall
-#   25 -- Porter Kresge Dining Hall
-#   30 -- Rachel Carson Oakes Dining Hall
-#   40 -- Colleges Nine and Ten Dining Hall
-# TODO: right a function which gets locationNum from locationName
-# locationName: the name of the dining hall must be chosen from the list above
-# Returns a dictionary -- each key is menu times, value is a list of menu items available at that time
+# locationName: the name of the dining hall must be chosen from the list below
+#   Cowell Stevenson Dining Hall
+#   Crown Merrill Dining Hall
+#   Porter Kresge Dining Hall
+#   Rachel Carson Oakes Dining Hall
+#   Colleges Nine and Ten Dining Hall
+# Returns a dictionary -- key = menu time, value = list of menu items available at time
 
 def get_menu(date, locationNum, locationName):
-    url = get_menu_url(date, locationNum, locationName)
-    r = requests.get(url)
+    locationNum = get_location_num(locationName)
+    if locationNum == "-1":
+        print("BAD LOCATION NAME")
+    else:
+        url = get_menu_url(date, locationNum, locationName)
+        r = requests.get(url)
 
-    soup = BeautifulSoup(r.text, 'html.parser')
-    word_lines = soup.get_text().splitlines()
-    stripped_words = [word.strip() for word in word_lines if not word.strip() == '']
+        soup = BeautifulSoup(r.text, 'html.parser')
+        word_lines = soup.get_text().splitlines()
+        stripped_words = [word.strip() for word in word_lines if not word.strip() == '']
 
-    # The final_word is the entry after the last food item
-    final_word = "The nutrient composition of food may vary due to genetic, " \
-                 "environmental and processing variables; changes in product " \
-                 "formulation, manufacturer's data, cooking and preparation techniques. " \
-                 "The information provided in these labels should be considered " \
-                 "as approximations of the nutritional analysis of the food."
+        # The final_word is the entry after the last food item
+        final_word = "The nutrient composition of food may vary due to genetic, " \
+                     "environmental and processing variables; changes in product " \
+                     "formulation, manufacturer's data, cooking and preparation techniques. " \
+                     "The information provided in these labels should be considered " \
+                     "as approximations of the nutritional analysis of the food."
 
-    food_items_begin = stripped_words.index('Breakfast')
-    food_items_end = stripped_words.index(final_word)
-    # Constructs a list of all food items but also includes random nutrition_info words which we have to clean up
-    food_items_dirty = stripped_words[food_items_begin:food_items_end]
+        food_items_begin = stripped_words.index('Breakfast')
+        food_items_end = stripped_words.index(final_word)
+        # Constructs a list of all food items but also includes random nutrition_info words which we have to clean up
+        food_items_dirty = stripped_words[food_items_begin:food_items_end]
 
-    food_items_clean = clean_list(food_items_dirty)
-    menu_dict = make_food_dict(food_items_clean)
+        food_items_clean = clean_list(food_items_dirty)
+        menu_dict = make_food_dict(food_items_clean)
 
-    return menu_dict
+        return menu_dict
 
 
 # Returns the formatted url to scrape
@@ -91,6 +93,19 @@ def get_menu_url(date, locationNum, locationName):
     menu_url = re.sub('<loc_name>', locationName, menu_url)
 
     return menu_url
+
+def get_location_num(locationName):
+    if locationName == "Cowell Stevenson Dining Hall":
+        return "05"
+    if locationName == "Crown Merrill Dining Hall":
+        return "20"
+    if locationName == "Porter Kresge Dining Hall":
+        return "25"
+    if locationName == "Rachel Carson Oakes Dining Hall":
+        return "30"
+    if locationName == "Colleges Nine and Ten Dining Hall":
+        return "40"
+    return "-1"
 
 
 ## Example test
