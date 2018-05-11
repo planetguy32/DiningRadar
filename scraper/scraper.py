@@ -1,5 +1,5 @@
 #  scraper.py  #
-#  This file scrapes the nutrition
+#  This file contains functions to scrape the dining hall menu for food items and their allergens
 
 from bs4 import BeautifulSoup
 import requests
