@@ -77,7 +77,7 @@ def add_preferences(items_dict, soup):
 #   Colleges Nine and Ten Dining Hall
 # Returns a dictionary -- key = menu time, value = list of menu items available at time
 
-def get_menu(date, locationNum, locationName):
+def get_menu(date, locationName):
     locationNum = get_location_num(locationName)
     if locationNum == "-1":
         print("BAD LOCATION NAME")
@@ -136,7 +136,7 @@ def get_location_num(locationName):
 
 ## Example test
 date = dict(month="05", day="06", year="2018")
-print(get_menu(date, "05", "Cowell Stevenson Dining Hall"))
+print(get_menu(date, "Cowell Stevenson Dining Hall"))
 
 
 

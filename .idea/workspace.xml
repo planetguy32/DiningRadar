@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb848da8-15d4-484a-ab52-b30628ebf36d" name="Default" comment="Added function to parse through tree and pick out food preferences (allergy info). Changed format of returned dictionary such that each item is a dictionary containing a list of items.">
+    <list default="true" id="cb848da8-15d4-484a-ab52-b30628ebf36d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraper/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper.py" afterDir="false" />
     </list>
@@ -17,8 +17,8 @@
       <file leaf-file-name="scraper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scraper/scraper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="45" column="76" lean-forward="true" selection-start-line="45" selection-start-column="76" selection-end-line="45" selection-end-column="76" />
+            <state relative-caret-position="358">
+              <caret line="138" column="21" selection-start-line="138" selection-start-column="21" selection-end-line="138" selection-end-column="21" />
               <folding>
                 <element signature="e#53#82#0" expanded="true" />
               </folding>
@@ -134,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525993189807</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added function to parse through tree and pick out food preferences (allergy info). Changed format of returned dictionary such that each item is a dictionary containing a list of preferences/allergies associated with each item.">
+      <created>1526018176491</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1526018176492</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -165,7 +172,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated get_menu, removing the need to add a location number. Added a function which returns the location number from the location name." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated get_menu, removing the need to add a location number. Added a function which returns the location number from the location name." />
+    <MESSAGE value="Added function to parse through tree and pick out food preferences (allergy info). Changed format of returned dictionary such that each item is a dictionary containing a list of preferences/allergies associated with each item." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added function to parse through tree and pick out food preferences (allergy info). Changed format of returned dictionary such that each item is a dictionary containing a list of preferences/allergies associated with each item." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/scraper/scraper.py">
@@ -180,8 +188,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scraper/scraper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="45" column="76" lean-forward="true" selection-start-line="45" selection-start-column="76" selection-end-line="45" selection-end-column="76" />
+        <state relative-caret-position="358">
+          <caret line="138" column="21" selection-start-line="138" selection-start-column="21" selection-end-line="138" selection-end-column="21" />
           <folding>
             <element signature="e#53#82#0" expanded="true" />
           </folding>
