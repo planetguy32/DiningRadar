@@ -18,6 +18,12 @@ def clean_list(food_list):
     clean_list = [item for item in food_list if food_list.index(item) not in nutr_indexes]
     return clean_list
 
+# Removes the escaped ampersand character, &amp
+def clean_food_item(food_item):
+    if '&amp;' in food_item:
+        food_item = re.sub(r"&amp;", '&', food_item)
+    return food_item
+
 # Assembles the menu dictionary:
 #   Adds new key if food time encountered
 #   Appends to list under current food time if food item
@@ -52,6 +58,7 @@ def add_preferences(items_dict, soup):
 
     for obj in food_objects:
         food_item = re.findall(r"<span .*\">(.*)</span>", str(obj))[0]
+        food_item = clean_food_item(food_item)
         food_preferences = re.findall(r"src=\"LegendImages/(.*).gif", str(obj))
         for menu_time in items_dict:
             for menu_item in items_dict[menu_time]:
