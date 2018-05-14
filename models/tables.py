@@ -15,13 +15,14 @@ def get_user_email():
 
 #More data can be put here
 db.define_table('menu_item',
-                Field('name')
+                Field('menu_name'),
+                Field('menu_is_vegan', type="boolean")
                 )
 
 db.define_table('available_food',
                 Field('food_id', type="reference menu_item"),
-                Field('location'),
-                Field('date')
+                Field('food_location'),
+                Field('food_date')
                 )
 
 # after defining tables, uncomment below to enable auditing
