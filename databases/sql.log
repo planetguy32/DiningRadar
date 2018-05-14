@@ -68,3 +68,22 @@ CREATE TABLE "available_food"(
     "food_date" CHAR(512)
 );
 success!
+timestamp: 2018-05-14T16:45:28.580675
+ALTER TABLE "menu_item" ADD "menu_is_fish" CHAR(1);
+timestamp: 2018-05-14T16:45:28.618583
+ALTER TABLE "menu_item" ADD "menu_is_vegetarian" CHAR(1);
+timestamp: 2018-05-14T16:45:28.642916
+ALTER TABLE "menu_item" ADD "menu_is_gluten_free" CHAR(1);
+timestamp: 2018-05-14T16:45:28.666281
+ALTER TABLE "menu_item" ADD "menu_is_soy" CHAR(1);
+timestamp: 2018-05-14T16:45:28.712490
+ALTER TABLE "menu_item" ADD "menu_is_eggs" CHAR(1);
+timestamp: 2018-05-14T16:45:28.745343
+ALTER TABLE "menu_item" ADD "menu_is_pork" CHAR(1);
+timestamp: 2018-05-14T16:45:28.768646
+ALTER TABLE "menu_item" ADD "menu_is_halal" CHAR(1);
+timestamp: 2018-05-14T16:45:28.796864
+ALTER TABLE "menu_item" ADD "menu_is_beef" CHAR(1);
+timestamp: 2018-05-14T16:45:28.823144
+ALTER TABLE "menu_item" ADD "menu_is_nuts" CHAR(1);
+success!

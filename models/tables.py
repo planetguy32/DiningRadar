@@ -16,7 +16,16 @@ def get_user_email():
 #More data can be put here
 db.define_table('menu_item',
                 Field('menu_name'),
-                Field('menu_is_vegan', type="boolean")
+                Field('menu_is_eggs', type="boolean"),
+                Field('menu_is_fish', type="boolean"),
+                Field('menu_is_gluten_free', type="boolean"),
+                Field('menu_is_nuts', type="boolean"),
+                Field('menu_is_soy', type="boolean"),
+                Field('menu_is_vegan', type="boolean"),
+                Field('menu_is_vegetarian', type="boolean"),
+                Field('menu_is_pork', type="boolean"),
+                Field('menu_is_beef', type="boolean"),
+                Field('menu_is_halal', type="boolean")
                 )
 
 db.define_table('available_food',
