@@ -1,43 +1,68 @@
 {{extend 'layout.html'}}
 
 {{block header}}
-<center style="background-color: #333; color:white; padding:30px">
-  <h1>/{{=request.application}}/{{=request.controller}}/{{=request.function}}
-</center>
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
 {{end}}
 
-{{if 'message' in globals():}}
-<h2>{{=message}}</h2>
-<p class="lead">{{=T('How did you get here?')}}</p>
-<ol>
-  <li>{{=T('You are successfully running web2py')}}</li>
-  <li>{{=XML(T('You visited the url %s', A(request.env.path_info,_href=request.env.path_info)))}}</li>
-  <li>{{=XML(T('Which called the function %s located in the file %s',
-    (A(request.function+'()',_href='#'),
-    A('web2py/applications/%(application)s/controllers/%(controller)s.py' % request,
-    _href=URL('admin','default','peek', args=(request.application,'controllers',request.controller+'.py'))))))}}</li>
-  <li>{{=XML(T('The output of the file is a dictionary that was rendered by the view %s',
-    A('web2py/applications/%(application)s/views/%(controller)s/index.html' % request,
-    _href=URL('admin','default','peek',args=(request.application,'views',request.controller,'index.html')))))}}</li>
-  <li>{{=T('You can modify this application and adapt it to your needs')}}</li>
-</ol>
-<center style="padding:50px">
-  <a class="btn btn-primary" href="{{=URL('admin','default','index')}}">
-    <i class="glyphicon glyphicon-cog"></i>
-    {{=T("admin")}}
-  </a>
-  <a class="btn btn-secondary" href="{{=URL('examples','default','index')}}">{{=T("Online examples")}}</a>
-  <a class="btn btn-secondary" href="http://web2py.com">web2py.com</a>
-  <a class="btn btn-secondary" href="http://web2py.com/book">{{=T('Documentation')}}</a>
-  <a class="btn btn-secondary" href="{{=URL('default','api_get_user_email')}}">{{=T('API Example')}}</a>
-  <a class="btn btn-secondary" href="{{=URL('default','grid/auth_user')}}">{{=T('Grid Example')}}</a>
-  <a class="btn btn-secondary" href="{{=URL('default','wiki')}}">{{=T('Wiki Example')}}</a>
-</center>
-{{elif 'content' in globals():}}
-{{=content}}
-{{else:}}
-{{=BEAUTIFY(response._vars)}}
-{{pass}}
+<div id="vue-div" class="display:none">
+  <form>
+  <div class="container" >
+      <label class="quarter right"></label>
+      <div class="half">
+        <input placeholder="Search..." type="text" class="fill">
+      </div>
+    </div>
+  <div class="accordion">
+      <!-- checkbox here is to keep the state of the accordion
+          its id must be unique and referened by the label -->
+      <input type="checkbox" id="x03">
+      <label for="x03"><a>Location Filters</a></label>
+      <div>
+        <div class="padded white">
+          <input type="checkbox"> <label for="x05">Cowell/Stevenson </label> 
+          <input type="checkbox"> <label for="x06">Crown/Merill </label> 
+          <input type="checkbox"> <label for="x07">9/10 </label> 
+          <input type="checkbox"> <label for="x08">Porter/Kresge </label> 
+          <input type="checkbox"> <label for="x09">Carson/Oakes </label> 
+        </div>
+      </div>
+    </div>          
+    <div class="accordion">
+      <input type="checkbox" id="x04">
+      <label for="x04"><a>Diet Options</a></label>
+      <div>
+        <div class="padded white">
+          
+            Eggs
+            <input type="radio" id="one" value="One" >
+            <label for="one">Yes</label>
+            
+            <input type="radio" id="two" value="Two" >
+            <label for="two">No</label> 
+
+            <input type="radio" id="two" value="Two" >
+            <label for="two">Don't Care</label> 
+            <input type="radio"> <label for="x06">Fish </label> 
+            <input type="radio"> <label for="x07">Gluten Free </label> 
+            <input type="radio"> <label for="x08">Nuts </label> 
+            <input type="radio"> <label for="x09">Soy </label>
+            <input type="radio"> <label for="x06">Vegetarian </label> 
+            <input type="radio"> <label for="x06">Vegan </label> 
+            <input type="radio"> <label for="x06">Pork </label>  
+            <input type="radio"> <label for="x06">Beef </label> 
+            <input type="radio"> <label for="x06">Halal </label>   
+        </div>
+      </div>
+    </div>  
+  </form>
+  <center style="padding:50px">
+    <a class="btn btn-primary">Cowell/Stevenson</a>
+    <a class="btn btn-primary">Crown/Merill</a>
+    <a class="btn btn-primary">9/10</a>
+    <a class="btn btn-primary">Porter/Kresge</a>
+    <a class="btn btn-primary">Carson/Oakes</a>
+  </center>
+</div>
 
 
 
