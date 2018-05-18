@@ -12,10 +12,14 @@ base_url = "http://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=UC+San
 # The 'nutrition info' words appear just after each menu section so we know their indexes
 # Returns 'clean list' rid of the 'nutrition info' words
 def clean_list(food_list):
-    nutr_indexes = [food_list.index('Breakfast') + 1, food_list.index('Lunch') + 1,
-                    food_list.index('Dinner') + 1, food_list.index('Late Night') + 1]
+    nutr_indices = []
+    section_names = ['Breakfast', 'Lunch', 'Dinner', 'Late Night']
 
-    clean_list = [item for item in food_list if food_list.index(item) not in nutr_indexes]
+    for i in range(len(section_names)):
+        if section_names[i] in food_list:
+            nutr_indices.append(food_list.index(section_names[i]) + 1)
+
+    clean_list = [item for item in food_list if food_list.index(item) not in nutr_indices]
     return clean_list
 
 # Removes the escaped ampersand character, &amp
@@ -32,13 +36,17 @@ def clean_food_item(food_item):
 #                                                   value of inner dictionary is list of food preferences (allergies)
 
 def make_food_dict(food_list, soup):
-    section_indexes = [food_list.index('Breakfast'), food_list.index('Lunch'),
-                       food_list.index('Dinner'), food_list.index('Late Night')]
+    section_indices = []
+    section_names = ['Breakfast', 'Lunch', 'Dinner', 'Late Night']
+    for i in range(len(section_names)):
+        if section_names[i] in food_list:
+            section_indices.append(food_list.index(section_names[i]))
+
 
     items_dict = {}
     food_section = None
     for i in range(len(food_list)):
-        if i in section_indexes:
+        if i in section_indices:
             food_section = food_list[i]
             items_dict[food_section] = {}
         else:
