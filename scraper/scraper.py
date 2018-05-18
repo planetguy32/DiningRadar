@@ -112,16 +112,19 @@ def get_menu(date, locationName):
                      "formulation, manufacturer's data, cooking and preparation techniques. " \
                      "The information provided in these labels should be considered " \
                      "as approximations of the nutritional analysis of the food."
+        try:
+            food_items_begin = stripped_words.index('Breakfast')
+            food_items_end = stripped_words.index(final_word)
+            # Constructs a list of all food items but also includes random nutrition_info words which we have to clean up
+            food_items_dirty = stripped_words[food_items_begin:food_items_end]
 
-        food_items_begin = stripped_words.index('Breakfast')
-        food_items_end = stripped_words.index(final_word)
-        # Constructs a list of all food items but also includes random nutrition_info words which we have to clean up
-        food_items_dirty = stripped_words[food_items_begin:food_items_end]
+            food_items_clean = clean_list(food_items_dirty)
+            menu_dict = make_food_dict(food_items_clean, soup)
 
-        food_items_clean = clean_list(food_items_dirty)
-        menu_dict = make_food_dict(food_items_clean, soup)
-
-        return menu_dict
+            return menu_dict
+        except ValueError as e:
+            print(e)
+            return {}
 
 
 # Returns the formatted url to scrape
