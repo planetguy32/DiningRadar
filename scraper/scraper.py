@@ -1,9 +1,14 @@
 #  scraper.py  #
 #  This file contains functions to scrape the dining hall menu for food items and their allergens
 
+import datetime
 from bs4 import BeautifulSoup
 import requests
 import re
+from gluon.scheduler import Scheduler
+import time
+import exceptions
+
 
 r = requests.get("http://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=UC+Santa+Cruz+Dining&dtdate=05%2F06%2F2018&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag=1")
 base_url = "http://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=UC+Santa+Cruz+Dining&dtdate=<date>&locationNum=<loc_num>&locationName=<loc_name>&naFlag=1"
@@ -156,5 +161,37 @@ def get_location_num(locationName):
 date = dict(month="05", day="06", year="2018")
 print(get_menu(date, "Cowell Stevenson Dining Hall"))
 
+def scrape_at_edge_of_range():
+    scrape_to_db(10, 11)
 
+scheduler.queue_task(scrape_at_edge_of_range, period=86400)
+scheduler = Scheduler(db)
+
+diningHallNames = ["Cowell Stevenson Dining Hall",
+    "Crown Merrill Dining Hall",
+    "Porter Kresge Dining Hall",
+    "Rachel Carson Oakes Dining Hall",
+    "Colleges Nine and Ten Dining Hall"]
+
+def scrape_to_db(start, end):
+    for days_ahead in range(start, end):
+        time_object = time.localtime(time.time()+days_ahead * 86400)
+        for location in diningHallNames:
+            print("===========================")
+            print(time_object)
+            print(location)
+            print("---------------------------")
+            menu=get_menu(dict(month=str(time_object.tm_mon), day=str(time_object.tm_mday), year=str(time_object.tm_year)), location)
+            print(menu)
+            #TODO put in DB
+            #TODO db.commit() once all DB updates are done - in scheduler, this isn't automatic
+
+
+# For testing
+scrape_to_db(0, 1)
+
+def scrape_at_edge_of_range():
+    scrape_to_db(10, 11)
+
+scheduler.queue_task(scrape_at_edge_of_range, period=86400)
 
