@@ -158,14 +158,16 @@ def get_location_num(locationName):
 
 
 ## Example test
-date = dict(month="05", day="06", year="2018")
-print(get_menu(date, "Cowell Stevenson Dining Hall"))
+#date = dict(month="05", day="06", year="2018")
+#print(get_menu(date, "Cowell Stevenson Dining Hall"))
+
+
 
 def scrape_at_edge_of_range():
     scrape_to_db(10, 11)
 
-scheduler.queue_task(scrape_at_edge_of_range, period=86400)
-scheduler = Scheduler(db)
+#scheduler.queue_task(scrape_at_edge_of_range, period=86400)
+#scheduler = Scheduler(db)
 
 diningHallNames = ["Cowell Stevenson Dining Hall",
     "Crown Merrill Dining Hall",
@@ -182,7 +184,40 @@ def scrape_to_db(start, end):
             print(location)
             print("---------------------------")
             menu=get_menu(dict(month=str(time_object.tm_mon), day=str(time_object.tm_mday), year=str(time_object.tm_year)), location)
-            print(menu)
+            for meal, foods in menu.items():
+                print(meal)
+                print(foods)
+                for food, dietary_info in foods.items():
+                    print(food)
+                    foods_from_db = db(db.menu_item.menu_name == food).select(db.menu_item.id)
+                    id=0
+                    print(foods_from_db)
+                    if foods_from_db.length == 0:
+                        print("new food")
+                        id=db.menu_item.insert(
+
+#                            menu_is_ = "" in dietary_info,
+
+                            menu_name = food,
+                            menu_is_eggs = "eggs" in dietary_info,
+                            menu_is_fish = "fish" in dietary_info,
+                            menu_is_gluten_free = "gluten" in dietary_info,
+                            menu_is_dairy = "milk" in dietary_info,
+                            menu_is_nuts = "nuts" in dietary_info,
+                            menu_is_vegan = "vegan" in dietary_info,
+                            menu_is_vegetarian = "veggie" in dietary_info,
+                            menu_is_pork = "pork" in dietary_info,
+                            menu_is_beef = "beef" in dietary_info,
+                            menu_is_halal = "halal" in dietary_info
+                        )
+                    else:
+                        id=foods_from_db.first().id
+                    db.available_food.insert(
+                        food_id = id,
+                        food_location = location,
+                        food_date = time_object.strftime("%x"),
+                        food_meal = meal
+                    )
             #TODO put in DB
             #TODO db.commit() once all DB updates are done - in scheduler, this isn't automatic
 
@@ -193,5 +228,5 @@ scrape_to_db(0, 1)
 def scrape_at_edge_of_range():
     scrape_to_db(10, 11)
 
-scheduler.queue_task(scrape_at_edge_of_range, period=86400)
+#scheduler.queue_task(scrape_at_edge_of_range, period=86400)
 

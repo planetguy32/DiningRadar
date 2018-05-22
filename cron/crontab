@@ -1,1 +1,7 @@
 #crontab
+
+#For real usage
+#0 1 * * * root *applications/DiningRadar/scraper/scraper.py
+
+#For testing
+0-59/1  *  *  *  * root *applications/DiningRadar/scraper/scraper.py
