@@ -12,7 +12,6 @@ import traceback
 
 #Test code
 import sys, os
-from subprocess import call
 
 r = requests.get("http://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=UC+Santa+Cruz+Dining&dtdate=05%2F06%2F2018&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag=1")
 base_url = "http://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=UC+Santa+Cruz+Dining&dtdate=<date>&locationNum=<loc_num>&locationName=<loc_name>&naFlag=1"
@@ -190,21 +189,20 @@ def scrape_to_db(start, end):
     for days_ahead in range(start, end):
         time_object = time.localtime(time.time()+days_ahead * 86400)
         for location in diningHallNames:
-            log_to_file("===========================\n")
-            log_to_file(str(time_object)+"\n")
-            log_to_file(location+"\n")
-            log_to_file("---------------------------"+"\n")
+#            log_to_file("===========================\n")
+#            log_to_file(str(time_object)+"\n")
+#            log_to_file(location+"\n")
+#            log_to_file("---------------------------"+"\n")
             menu=get_menu(dict(month=str(time_object.tm_mon), day=str(time_object.tm_mday), year=str(time_object.tm_year)), location)
             for meal, foods in menu.items():
-                log_to_file(meal+"\n")
-                log_to_file(str(foods)+"\n")
+#                log_to_file(meal+"\n")
+#                log_to_file(str(foods)+"\n")
                 for food, dietary_info in foods.items():
-                    log_to_file(food+"\n")
+#                    log_to_file(food+"\n")
                     foods_from_db = db(db.menu_item.menu_name == food).select(db.menu_item.id)
                     id=0
                     log_to_file(str(foods_from_db)+"\n")
                     if len(foods_from_db) == 0:
-                        log_to_file("new food\n")
                         id=db.menu_item.insert(
 
 #                            menu_is_ = "" in dietary_info,
@@ -244,7 +242,7 @@ def log_to_file(string):
 try:
     tend_db()
 #    call(["zenity", "--info", '--text="Scraping succeeded"'])
-    call(["zenity", "--info", '--text=":)"'])
+#    call(["zenity", "--info", '--text=":)"'])
 except Exception as error:
 #    call(["zenity", "--info", '--text="Scraping failed"'])
     exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -253,7 +251,7 @@ except Exception as error:
     for s in traceback.format_tb(exc_tb):
             log_to_file("{0}".format(str(s)))
     #log_to_file("{0}\n".format(error))
-    call(["zenity", "--info", '--text="ow"'])
+#    call(["zenity", "--info", '--text="ow"'])
 
 
 
