@@ -8,7 +8,11 @@ import re
 from gluon.scheduler import Scheduler
 import time
 import exceptions
+import traceback
 
+#Test code
+import sys, os
+from subprocess import call
 
 r = requests.get("http://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=UC+Santa+Cruz+Dining&dtdate=05%2F06%2F2018&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag=1")
 base_url = "http://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=UC+Santa+Cruz+Dining&dtdate=<date>&locationNum=<loc_num>&locationName=<loc_name>&naFlag=1"
@@ -175,32 +179,40 @@ diningHallNames = ["Cowell Stevenson Dining Hall",
     "Rachel Carson Oakes Dining Hall",
     "Colleges Nine and Ten Dining Hall"]
 
+def tend_db():
+    # Nuke the old available_food DB
+    db(db.available_food.id > -1).delete()
+    # Scan the next 2 weeks
+    scrape_to_db(0, 14)
+
+
 def scrape_to_db(start, end):
     for days_ahead in range(start, end):
         time_object = time.localtime(time.time()+days_ahead * 86400)
         for location in diningHallNames:
-            print("===========================")
-            print(time_object)
-            print(location)
-            print("---------------------------")
+            log_to_file("===========================\n")
+            log_to_file(str(time_object)+"\n")
+            log_to_file(location+"\n")
+            log_to_file("---------------------------"+"\n")
             menu=get_menu(dict(month=str(time_object.tm_mon), day=str(time_object.tm_mday), year=str(time_object.tm_year)), location)
             for meal, foods in menu.items():
-                print(meal)
-                print(foods)
+                log_to_file(meal+"\n")
+                log_to_file(str(foods)+"\n")
                 for food, dietary_info in foods.items():
-                    print(food)
+                    log_to_file(food+"\n")
                     foods_from_db = db(db.menu_item.menu_name == food).select(db.menu_item.id)
                     id=0
-                    print(foods_from_db)
-                    if foods_from_db.length == 0:
-                        print("new food")
+                    log_to_file(str(foods_from_db)+"\n")
+                    if len(foods_from_db) == 0:
+                        log_to_file("new food\n")
                         id=db.menu_item.insert(
 
 #                            menu_is_ = "" in dietary_info,
 
-                            menu_name = food,
+                            menu_name = food.lower(),
                             menu_is_eggs = "eggs" in dietary_info,
                             menu_is_fish = "fish" in dietary_info,
+                            menu_is_soy = "soy" in dietary_info,
                             menu_is_gluten_free = "gluten" in dietary_info,
                             menu_is_dairy = "milk" in dietary_info,
                             menu_is_nuts = "nuts" in dietary_info,
@@ -215,15 +227,35 @@ def scrape_to_db(start, end):
                     db.available_food.insert(
                         food_id = id,
                         food_location = location,
-                        food_date = time_object.strftime("%x"),
+                        food_date = time_object,
                         food_meal = meal
                     )
             #TODO put in DB
             #TODO db.commit() once all DB updates are done - in scheduler, this isn't automatic
-
+    db.commit()
 
 # For testing
-scrape_to_db(0, 1)
+
+def log_to_file(string):
+    f= open("scraper.log","a+")
+    f.write(string)
+
+
+try:
+    tend_db()
+#    call(["zenity", "--info", '--text="Scraping succeeded"'])
+    call(["zenity", "--info", '--text=":)"'])
+except Exception as error:
+#    call(["zenity", "--info", '--text="Scraping failed"'])
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+    log_to_file("{0}\n{1}\n".format(str(exc_type), str(fname)))
+    for s in traceback.format_tb(exc_tb):
+            log_to_file("{0}".format(str(s)))
+    #log_to_file("{0}\n".format(error))
+    call(["zenity", "--info", '--text="ow"'])
+
+
 
 def scrape_at_edge_of_range():
     scrape_to_db(10, 11)
