@@ -13,35 +13,38 @@ var app = function() {
         }
     };
 	
-	function do_search_url() {
-	}
-	
-	self.do_search = function() {
+	self.do_search = function(search_input) {
+		//Note: we're probably going to need a function to get information from tables
+		//match the college value to the database college location
+		//after the match take the menu data from that college
+		//Then match the search texts with the database menu
 	};
 	
-	self.get_more_results = function () {
-    };
-	
-	self.college_checkbox = function(college) {
+	self.college_checkbox = function(college_search) {
 		//an idea for how the checkboxs should work
-		if(college ==="nine_ten") {
-			self.vue.nine_ten = !self.vue.nine_ten
+		if(college_search ==="nine_ten") {
+			self.vue.nine_ten = !self.vue.nine_ten;
+			self.vue.college = college_search;
 		}
 		
-		else if(college ==="cowell_stevenson") {
-			self.vue.cowell_stevenson = !self.vue.cowell_stevenson
+		else if(college_search ==="cowell_stevenson") {
+			self.vue.cowell_stevenson = !self.vue.cowell_stevenson;
+			self.vue.college = college_search;
 		}
 		
-		else if(college ==="crown_merrill") {
-			self.vue.crown_merrill = !self.vue.crown_merrill
+		else if(college_search ==="crown_merrill") {
+			self.vue.crown_merrill = !self.vue.crown_merrill;
+			self.vue.college = college_search;
 		}
 		
-		else if(college ==="porter_kresge") {
-			self.vue.porter_kresge = !self.vue.porter_kresge
+		else if(college_search ==="porter_kresge") {
+			self.vue.porter_kresge = !self.vue.porter_kresge;
+			self.vue.college = college_search;
 		}
 		
-		else if(college ==="carson_oakes") {
-			self.vue.carson_oakes = !self.vue.carson_oakes
+		else if(college_search ==="carson_oakes") {
+			self.vue.carson_oakes = !self.vue.carson_oakes;
+			self.vue.college = college_search;
 		}
 		
 	};
@@ -63,7 +66,6 @@ var app = function() {
 			college: ""
         },
         methods: {
-			get_more_results: self.get_more_results,
 			do_search: self.do_search,
 			college_checkbox: self.college_checkbox
 			
