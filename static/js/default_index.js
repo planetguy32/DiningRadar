@@ -13,64 +13,22 @@ var app = function() {
         }
     };
 	
-	function get_menu_url(start_idx, end_idx) {
-		var pp = {
-			start_idx: start_idx,
-			end_idx: end_idx
-		};
-		
-		return menu_url + "?" + $.param(pp);
-	}
-	
-	self.get_memos = function() {
-		$.getJSON(get_menu_url(0, 100), function (data) {
-			//self.vue.menus = data.menus
-			//possible way to get entire menu to the front end
-	};
-	
-	self.do_search = function(search_input) {
+	self.menu_search = function() {
 		//Note: we're probably going to need a function to get information from tables
 		//match the college value to the database college location
 		//after the match take the menu data from that college
 		//Then match the search texts with the database menu
-		/*
-		$.post(search_input_url,
+
+        //Need to add
+		$.post(menu_search,
             {
-                searching: search_input
+                food_name: self.vue.form_food
             },
-		*/
-	};
-	
-	self.college_checkbox = function(college_search) {
-		//an idea for how the checkboxs should work
-		if(college_search ==="nine_ten") {
-			self.vue.nine_ten = !self.vue.nine_ten;
-		}
-		
-		else if(college_search ==="cowell_stevenson") {
-			self.vue.cowell_stevenson = !self.vue.cowell_stevenson;
-		}
-		
-		else if(college_search ==="crown_merrill") {
-			self.vue.crown_merrill = !self.vue.crown_merrill;
-		}
-		
-		else if(college_search ==="porter_kresge") {
-			self.vue.porter_kresge = !self.vue.porter_kresge;
-		}
-		
-		else if(college_search ==="carson_oakes") {
-			self.vue.carson_oakes = !self.vue.carson_oakes;
-		}
-		
-		self.vue.college = college_search;
-		
-		/* ideally this is suppose to send the college name where the api wil do its work
-		$.post(college_name_url,
-            {
-                college_name: college_search
-            },
-			*/
+            function (data) {
+                self.vue.menus = data.results;
+            }
+         )
+
 	};
 	
 	self.filter_checkbox = function(filter) {
@@ -136,8 +94,6 @@ var app = function() {
 			porter_kresge: false,
 			carson_oakes: false,
 			form_food: null,
-			form_ingrediants: null,
-			college: "",
 			menu_is_eggs: false,
             menu_is_fish: false,
             menu_is_gluten_free: false,
@@ -150,16 +106,12 @@ var app = function() {
             menu_is_halal: false
         },
         methods: {
-			do_search: self.do_search,
-			college_checkbox: self.college_checkbox,
-			filter_checkbox: self.filter_checkbox, 
-			get_menu: self.get_menu
-			
+			menu_search: self.menu_search,
+			filter_checkbox: self.filter_checkbox,
         }
 
     });
-	
-	self.get_memos();
+
 	$("vue-div").show();
 
     return self;

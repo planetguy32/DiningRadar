@@ -4,14 +4,17 @@
 <link rel="stylesheet" href="{{=URL('static','css/stupid.css')}}"/> 
 <link rel="stylesheet" href="{{=URL('static','css/myapp.css')}}"/>
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+    var menu_search = "{{=URL('api', 'search')}}";
+</script>
 {{end}}
 
 <div id="vue-div" class="display:none">
-  <form>
+  <form @submit.prevent="menu_search">
   <div class="container" >
       
       <div class = "searchbar">
-        <input placeholder="Search..." type="text" class="fill">
+        <input v-model="form_food" placeholder="Search..." type="text" class="fill">
       </div>
 
     <div class="accordion foodfilter">
@@ -23,7 +26,7 @@
             <center><h6>Include</h6></center>
             <div class="filteroptions">
             <div class="container">
-                <div class="half"><input type="checkbox" v-model="eggs" value="1"> <label for="x06">Eggs </label></div>
+                <div class="half"><input type="checkbox"> <label for="x06">Eggs </label></div>
                 <div class="half"><input type="checkbox"> <label for="x06">Fish </label></div>
             </div>
             <div class="container">
@@ -50,7 +53,7 @@
             <center><h6>Exclude</h6></center>
             <div class="filteroptions">
             <div class="container">
-                <div class="half"><input type="checkbox" v-model="eggs" value="1"> <label for="x06">Eggs </label></div>
+                <div class="half"><input type="checkbox"> <label for="x06">Eggs </label></div>
                 <div class="half"><input type="checkbox"> <label for="x06">Fish </label></div>
             </div>
             <div class="container">
@@ -73,24 +76,24 @@
         </div>
         </div>
       </div>
-    </div>  
+    </div>
+  </div>
   </form>
   
   <div style="padding:50px">
-    <a class="btn navy btn-primary" v-if='!cowell_stevenson' v-on:click='college_checkbox("cowell_stevenson")'><p class="buttonsize">Cowell/Stevenson</p></a>
-    <a class="btn teal btn-primary" v-if='cowell_stevenson' v-on:click='college_checkbox("cowell_stevenson")'><p class="buttonsize">Cowell/Stevenson</p></a>
-    <a class="btn navy btn-primary" v-if='!crown_merrill' v-on:click='college_checkbox("crown_merrill")'><p class="buttonsize">Crown/Merrill</p></a>
-    <a class="btn teal btn-primary" v-if='crown_merrill' v-on:click='college_checkbox("crown_merrill")'><p class="buttonsize">Crown/Merrill</p></a>
-    <a class="btn navy btn-primary" v-if='!nine_ten' v-on:click='college_checkbox("nine_ten")'><p class="buttonsize">9/10</p></a>
-    <a class="btn teal btn-primary" v-if='nine_ten' v-on:click='college_checkbox("nine_ten")'><p class="buttonsize">9/10</p></a>
-    <a class="btn navy btn-primary" v-if='!porter_kresge' v-on:click='college_checkbox("porter_kresge")'><p class="buttonsize">Porter/Kresge</p></a>
-    <a class="btn teal btn-primary" v-if='porter_kresge' v-on:click='college_checkbox("porter_kresge")'><p class="buttonsize">Porter/Kresge</p></a>
-    <a class="btn navy btn-primary" v-if='!carson_oakes' v-on:click='college_checkbox("carson_oakes")'><p class="buttonsize">Carson/Oakes</p></a>
-    <a class="btn teal btn-primary" v-if='carson_oakes' v-on:click='college_checkbox("carson_oakes")'><p class="buttonsize">Carson/Oakes</p></a>
+    <a class="btn navy btn-primary" v-if='!cowell_stevenson' v-on:click='cowell_stevenson = !cowell_stevenson'><p class="buttonsize">Cowell/Stevenson</p></a>
+    <a class="btn teal btn-primary" v-if='cowell_stevenson' v-on:click='cowell_stevenson = !cowell_stevenson'><p class="buttonsize">Cowell/Stevenson</p></a>
+    <a class="btn navy btn-primary" v-if='!crown_merrill' v-on:click='crown_merrill = !crown_merrill'><p class="buttonsize">Crown/Merrill</p></a>
+    <a class="btn teal btn-primary" v-if='crown_merrill' v-on:click='crown_merrill = !crown_merrill'><p class="buttonsize">Crown/Merrill</p></a>
+    <a class="btn navy btn-primary" v-if='!nine_ten' v-on:click='nine_ten = !nine_ten'><p class="buttonsize">9/10</p></a>
+    <a class="btn teal btn-primary" v-if='nine_ten' v-on:click='nine_ten = !nine_ten'><p class="buttonsize">9/10</p></a>
+    <a class="btn navy btn-primary" v-if='!porter_kresge' v-on:click='porter_kresge = !porter_kresge'><p class="buttonsize">Porter/Kresge</p></a>
+    <a class="btn teal btn-primary" v-if='porter_kresge' v-on:click='porter_kresge = !porter_kresge'><p class="buttonsize">Porter/Kresge</p></a>
+    <a class="btn navy btn-primary" v-if='!carson_oakes' v-on:click='carson_oakes = !carson_oakes'><p class="buttonsize">Carson/Oakes</p></a>
+    <a class="btn teal btn-primary" v-if='carson_oakes' v-on:click='carson_oakes = !carson_oakes'><p class="buttonsize">Carson/Oakes</p></a>
   </div>
 </div>
-Delete this ${eggs}
-</div>
+
 
 
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>
