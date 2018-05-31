@@ -73,7 +73,7 @@ var app = function() {
 
     });
 	
-	self.get_memos();
+	//self.get_memos();
 	$("vue-div").show();
 
     return self;
