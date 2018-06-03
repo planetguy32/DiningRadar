@@ -1,0 +1,19 @@
+.buttonsize {
+    height: 100%;
+    width: 100px;
+    text-align: center;
+    color: white;
+}
+.searchbar {
+    width: 70%;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.foodfilter {
+    width: 70%;
+}
+
+.filteroptions {
+    padding-left: 7%;
+}

@@ -13,41 +13,73 @@ var app = function() {
         }
     };
 	
-	self.do_search = function(search_input) {
+	self.menu_search = function() {
 		//Note: we're probably going to need a function to get information from tables
 		//match the college value to the database college location
 		//after the match take the menu data from that college
 		//Then match the search texts with the database menu
+
+        //Need to add
+		$.post(menu_search,
+            {
+                food_name: self.vue.form_food
+            },
+            function (data) {
+                self.vue.menus = data.results;
+            }
+         )
+
 	};
 	
-	self.college_checkbox = function(college_search) {
-		//an idea for how the checkboxs should work
-		if(college_search ==="nine_ten") {
-			self.vue.nine_ten = !self.vue.nine_ten;
-			self.vue.college = college_search;
+	self.filter_checkbox = function(filter) {
+		//an Idea for the checkbox for the menu
+		if(filter ==="menu_is_eggs") {
+			self.vue.menu_is_eggs = !self.vue.menu_is_eggs;
 		}
 		
-		else if(college_search ==="cowell_stevenson") {
-			self.vue.cowell_stevenson = !self.vue.cowell_stevenson;
-			self.vue.college = college_search;
+		else if(filter ==="menu_is_fish") {
+			self.vue.menu_is_fish = !self.vue.menu_is_fish;
 		}
 		
-		else if(college_search ==="crown_merrill") {
-			self.vue.crown_merrill = !self.vue.crown_merrill;
-			self.vue.college = college_search;
+		else if(filter ==="menu_is_gluten_free") {
+			self.vue.menu_is_gluten_free = !self.vue.menu_is_gluten_free;
 		}
 		
-		else if(college_search ==="porter_kresge") {
-			self.vue.porter_kresge = !self.vue.porter_kresge;
-			self.vue.college = college_search;
+		else if(filter ==="menu_is_nuts") {
+			self.vue.menu_is_nuts = !self.vue.menu_is_nuts;
 		}
 		
-		else if(college_search ==="carson_oakes") {
-			self.vue.carson_oakes = !self.vue.carson_oakes;
-			self.vue.college = college_search;
-		}
+		else if(filter ==="menu_is_soy") {
+			self.vue.menu_is_soy = !self.vue.menu_is_soy;
+		}	
 		
-	};
+		else if(filter ==="menu_is_vegan") {
+			self.vue.menu_is_vegan = !self.vue.menu_is_vegan;
+		}	
+		
+		else if(filter ==="menu_is_vegetarian") {
+			self.vue.menu_is_vegetarian = !self.vue.menu_is_vegetarian;
+		}	
+		
+		else if(filter ==="menu_is_pork") {
+			self.vue.menu_is_pork = !self.vue.menu_is_pork;
+		}	
+		
+		else if(filter ==="menu_is_beef") {
+			self.vue.menu_is_beef = !self.vue.menu_is_beef;
+		}	
+		
+		else if(filter ==="menu_is_halal") {
+			self.vue.menu_is_halal = !self.vue.menu_is_halal;
+		}
+
+		/*ideally sends the filter name specification for the api to do it work. 
+		$.post(filter_url,
+            {
+                filter_options: filter
+            },
+			*/
+	}
 	
     // Complete as needed.
     self.vue = new Vue({
@@ -55,25 +87,31 @@ var app = function() {
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
-			results: [],
+			menus: [],
 			nine_ten: false,
 			cowell_stevenson: false,
 			crown_merrill: false,
 			porter_kresge: false,
 			carson_oakes: false,
 			form_food: null,
-			form_ingrediants: null,
-			college: ""
+			menu_is_eggs: false,
+            menu_is_fish: false,
+            menu_is_gluten_free: false,
+            menu_is_nuts: false,
+            menu_is_soy: false,
+            menu_is_vegan: false,
+            menu_is_vegetarian: false,
+            menu_is_pork: false,
+            menu_is_beef: false,
+            menu_is_halal: false
         },
         methods: {
-			do_search: self.do_search,
-			college_checkbox: self.college_checkbox
-			
+			menu_search: self.menu_search,
+			filter_checkbox: self.filter_checkbox,
         }
 
     });
-	
-	//self.get_memos();
+
 	$("vue-div").show();
 
     return self;
