@@ -19,7 +19,7 @@ def search():
             query = query & (db.menu_item[s] == (request.vars[s] == "T"))
 
 
-    #Filter by dining hall restrictions
+    #Filter by dining hall locations
     possible_dining_halls = {
             'crown_merrill': "Crown Merrill Dining Hall",
             'porter_kresge':"Porter Kresge Dining Hall",
@@ -37,6 +37,16 @@ def search():
                 subQuery = subQuery | a
     if subQuery <> None:
         query = query & subQuery
+
+
+    #Filter by dates
+    if "latest_day_offset" in request.vars:
+        end_date = int(request.vars["latest_day_offset"])
+        start_date = 0
+        if "earliest_day_offset" in request.vars:
+            start_date = int(request.vars["earliest_day_offset"])
+        query=query & (db.available_food.food_date <= end_date) & (db.available_food.food_date >= start_date)
+
 
     selection=db(query).select(
                 db.menu_item.menu_name
