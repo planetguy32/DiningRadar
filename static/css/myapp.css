@@ -5,15 +5,27 @@
     color: white;
 }
 .searchbar {
-    width: 70%;
+
+    width: 75%;
     border-style: solid;
     border-width: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    display: block;
 }
 
 .foodfilter {
-    width: 70%;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .filteroptions {
-    padding-left: 7%;
+    margin:0 auto;
+    
+}
+
+.buttonarea {
+    display: block;
+    margin: 0 auto;
 }
