@@ -12,6 +12,8 @@
 <div id="vue-div" class="display:none">
   <form @submit.prevent="menu_search">
   <div class="container" >
+
+    <img src="{{=URL('static', 'images/diningradar.png')}}" alt="Dining Radar logo">
       
       <div class = "searchbar">
         <input v-model="form_food" placeholder="Search..." type="text" class="fill">
