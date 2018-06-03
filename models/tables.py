@@ -39,6 +39,11 @@ db.define_table('menu_item',
 db.define_table('available_food',
                 Field('food_id', type="reference menu_item"),
                 Field('food_location'),
-                Field('food_date', type="date"),
+                Field('food_date', type="integer"),
                 Field('food_meal')
+                )
+
+db.define_table('saved_searches',
+                Field('search_owner', type="reference auth_user"),
+                Field('search_url')
                 )

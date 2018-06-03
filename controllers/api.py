@@ -38,10 +38,11 @@ def search():
     if subQuery <> None:
         query = query & subQuery
 
-
-    selection=db(query).select(db.menu_item.menu_name, db.available_food.food_location, db.available_food.food_meal
-    ##TODO is getting dates from a DB possible in Web2Py?
-##              , db.available_food.food_date
+    selection=db(query).select(
+                db.menu_item.menu_name
+              , db.available_food.food_location
+              , db.available_food.food_meal
+              , db.available_food.food_date
               )
     results=[]
     for a in selection:
@@ -49,7 +50,39 @@ def search():
             {"name": a.menu_item.menu_name,
              "hall": a.available_food.food_location,
              "meal": a.available_food.food_meal,
-    ##TODO is getting dates from a DB possible in Web2Py?
-##             "time_to": a.available_food.food_date.date()-datetime.datetime.today()
+             "time_to": a.available_food.food_date
             })
     return response.json(dict(results=results))
+
+
+
+@auth.requires_signature()
+@auth.requires_login()
+def add_search():
+    t_id = db.saved_searches.insert(
+        search_owner=auth.user_id,
+        search_url=request.vars.search_url
+    )
+    t = db.notes(t_id)
+    return response.json(dict(note=t))
+
+@auth.requires_login()
+def get_searches():
+    logged_in = auth.user_id is not None
+    searches = db(db.saved_searches.search_owner == auth.user_id).select(db.saved_searches.search_url, db.saved_searches.id)
+    urls=[]
+    for s in searches:
+        urls.append(s)
+    return response.json(urls)
+
+
+
+@auth.requires_login()
+@auth.requires_signature()
+def remove_search():
+    selection=db(db.saved_searches.id == request.vars.id)
+    first=selection.select().first()
+    if(first <> None and first.search_owner == auth.user_id):
+        selection.delete()
+    return "ok"
+
