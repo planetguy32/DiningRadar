@@ -209,6 +209,7 @@ def scrape_to_db(start, end):
 #                log_to_file(meal+"\n")
 #                log_to_file(str(foods)+"\n")
                 for food, dietary_info in foods.items():
+                    food=food.lower()
 #                    log_to_file(food+"\n")
                     foods_from_db = db(db.menu_item.menu_name == food).select(db.menu_item.id)
                     id=0
@@ -218,7 +219,7 @@ def scrape_to_db(start, end):
 
 #                            menu_is_ = "" in dietary_info,
 
-                            menu_name = food.lower(),
+                            menu_name = food,
                             menu_is_eggs = "eggs" in dietary_info,
                             menu_is_fish = "fish" in dietary_info,
                             menu_is_soy = "soy" in dietary_info,
