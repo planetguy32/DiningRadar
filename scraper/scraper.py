@@ -115,14 +115,25 @@ def get_menu(date, locationName):
             stripped_words.append(string)
 
         # The final_word is the entry after the last food item
-        final_word = "The nutrient composition of food may vary due to genetic, " \
-                     "environmental and processing variables; changes in product " \
-                     "formulation, manufacturer's data, cooking and preparation techniques. " \
-                     "The information provided in these labels should be considered " \
-                     "as approximations of the nutritional analysis of the food."
+        final_word = ["The nutrient composition of food may vary due to genetic, " 
+                      "environmental and processing variables; changes in product " 
+                      "formulation, manufacturer's data, cooking and preparation techniques. " 
+                      "The information provided in these labels should be considered " 
+                      "as approximations of the nutritional analysis of the food.",
+                      "Information is based on availability and subject to change. " 
+                      "The nutrient composition of food may vary due to genetic, " 
+                      "environmental and processing variables; changes in product " 
+                      "formulation, manufacturer's data, cooking and preparation " 
+                      "techniques. The information provided in these labels should " 
+                      "be considered as approximations of the nutritional analysis of the food."]
         try:
             food_items_begin = stripped_words.index('Breakfast')
-            food_items_end = stripped_words.index(final_word)
+            food_items_end = None
+            for word in final_word:
+                if word in stripped_words:
+                    food_items_end = stripped_words.index(final_word)
+                else:
+                    raise ValueError("Could not find meals")
             # Constructs a list of all food items but also includes random nutrition_info words which we have to clean up
             food_items_dirty = stripped_words[food_items_begin:food_items_end]
 
