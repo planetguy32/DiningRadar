@@ -38,8 +38,9 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="http://web2py.com">web2py</a>
+      <a class="navbar-brand" href="http://web2py.com">DiningRadar</a>
       <div class="collapse navbar-collapse">
+<!--
         <ul class="navbar-nav">
           {{for _item in response.menu or []:}}
           {{if len(_item)<4 or not _item[3]:}}
@@ -61,11 +62,12 @@
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
         </form>      
+-->
         {{if 'auth' in globals():}}
         <ul class="navbar-nav navbar-right">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
+              {{if auth.user:}}{{=auth.user.first_name}}{{else:}}Login or sign up to save queries{{pass}}
             </a>
             <div class="dropdown-menu">
               {{if auth.user:}}
