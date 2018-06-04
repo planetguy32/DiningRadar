@@ -4,12 +4,13 @@ import datetime
 
 
 def search():
-    food=request.vars.food_name
 
     query = (db.available_food.food_id == db.menu_item.id)
 
     #Filter by food name
-    query = query & db.menu_item.menu_name.contains(food)
+    if "food_name" in request.vars:
+        food=request.vars["food_name"]
+        query = query & db.menu_item.menu_name.contains(food)
 
     #Filter by dietary restrictions
     possible_dietary_restrictions = ['eggs', 'fish', 'gluten_free', 'dairy', 'nuts', 'soy', 'vegan', 'vegetarian', 'pork', 'beef', 'halal']
