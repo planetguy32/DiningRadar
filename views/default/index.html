@@ -26,60 +26,128 @@
       <input type="checkbox" id="x04">
       <label for="x04"><a>Diet Options</a></label>
       <div class="container">
-        <div class="half">
+        
         <div class="white">
             <center><h6>Include</h6></center>
             <div class="filteroptions">
             <div class="container">
-                <div class="half"><input type="checkbox"> <label for="x06">Eggs </label></div>
-                <div class="half"><input type="checkbox"> <label for="x06">Fish </label></div>
+                <div class="accordion half align">
+                        <input type="checkbox" id="x10">
+                        <label for="x10"><a>Eggs</a></label>
+                        <div class = container>
+                            <div class=""><span class="btnpad"><input name="eggs" type="radio" v-on:click="menu_is_eggs = 1"><label for="x06">Yes </label></span >
+                                <span class="btnpad"><input name="eggs" type="radio" v-on:click="menu_is_eggs = -1"> <label for="x06">No </label></span >
+                                <span class="btnpad"><input name="eggs" type="radio" v-on:click="menu_is_eggs = 0" checked="checked"> <label for="x06">Don't care</label></span >
+                            </div>
+                        </div>
+                
+                </div>
+                <div class="accordion half align">
+                    <input type="checkbox" id="x11">
+                    <label for="x11"><a>Fish</a></label>
+                    <div class = container>
+                        <div class=""><span class="btnpad"><input name="fish" type="radio" v-on:click="menu_is_fish = 1"><label for="x06">Yes </label></span >
+                            <span class="btnpad"><input name="fish" type="radio" v-on:click="menu_is_fish = -1"> <label for="x06">No </label></span >
+                            <span class="btnpad"><input name="fish" type="radio" v-on:click="menu_is_fish = 0" checked="checked"> <label for="x06">Don't care</label></span >
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="container">
+                <div class="accordion half align">
+                        <input type="checkbox" id="x12">
+                        <label for="x12"><a>Gluten Free</a></label>
+                        <div class = container>
+                            <div class=""><span class="btnpad"><input name="Gluten Free" type="radio" v-on:click="menu_is_gluten_free = 1"><label for="x06">Yes </label></span >
+                                <span class="btnpad"><input name="Gluten Free" type="radio" v-on:click="menu_is_gluten_free = -1"> <label for="x06">No </label></span >
+                                <span class="btnpad"><input name="Gluten Free" type="radio" v-on:click="menu_is_gluten_free = 0" checked="checked"> <label for="x06">Don't care</label></span >
+                            </div>
+                        </div>
+                
+                </div>
+                <div class="accordion half align">
+                    <input type="checkbox" id="x13">
+                    <label for="x13"><a>Nuts</a></label>
+                    <div class = container>
+                        <div class=""><span class="btnpad"><input name="nuts" type="radio" v-on:click="menu_is_nuts = 1"><label for="x06">Yes </label></span >
+                            <span class="btnpad"><input name="nuts" type="radio" v-on:click="menu_is_nuts = -1"> <label for="x06">No </label></span >
+                            <span class="btnpad"><input name="nuts" type="radio" v-on:click="menu_is_nuts = 0" checked="checked"> <label for="x06">Don't care</label></span >
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="container">
-                <div class="half"><input type="checkbox"> <label for="x07">Gluten Free </label></div>
-                <div class="half"><input type="checkbox"> <label for="x08">Nuts </label></div>
+                <div class="accordion half align">
+                        <input type="checkbox" id="x14">
+                        <label for="x14"><a>Soy</a></label>
+                        <div class = container>
+                            <div class=""><span class="btnpad"><input name="Soy" type="radio" v-on:click="menu_is_soy = 1"><label for="x06">Yes </label></span >
+                                <span class="btnpad"><input name="Soy" type="radio" v-on:click="menu_is_soy = -1"> <label for="x06">No </label></span >
+                                <span class="btnpad"><input name="Soy" type="radio" v-on:click="menu_is_soy = 0" checked="checked"> <label for="x06">Don't care</label></span >
+                            </div>
+                        </div>
+                
+                </div>
+                <div class="accordion half align">
+                    <input type="checkbox" id="x15">
+                    <label for="x15"><a>Vegetarian</a></label>
+                    <div class = container>
+                        <div class=""><span class="btnpad"><input name="vegetarian" type="radio" v-on:click="menu_is_vegetarian = 1"><label for="x06">Yes </label></span >
+                            <span class="btnpad"><input name="vegetarian" type="radio" v-on:click="menu_is_vegetarian = -1"> <label for="x06">No </label></span >
+                            <span class="btnpad"><input name="vegetarian" type="radio" v-on:click="menu_is_vegetarian = 0" checked="checked"> <label for="x06">Don't care</label></span >
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="container">
-                <div class="half"><input type="checkbox"> <label for="x09">Soy </label></div>
-                <div class="half"><input type="checkbox"> <label for="x06">Vegetarian </label></div>
-            </div>
+                    <div class="accordion half align">
+                            <input type="checkbox" id="x16">
+                            <label for="x16"><a>Vegan</a></label>
+                            <div class = container>
+                                <div class=""><span class="btnpad"><input name="vegan" type="radio" v-on:click="menu_is_vegan = 1"><label for="x06">Yes </label></span >
+                                    <span class="btnpad"><input name="vegan" type="radio" v-on:click="menu_is_vegan = -1"> <label for="x06">No </label></span >
+                                    <span class="btnpad"><input name="vegan" type="radio" v-on:click="menu_is_vegan = 0" checked="checked"> <label for="x06">Don't care</label></span >
+                                </div>
+                            </div>
+                    
+                    </div>
+                    <div class="accordion half align">
+                        <input type="checkbox" id="x17">
+                        <label for="x17"><a>Pork</a></label>
+                        <div class = container>
+                            <div class=""><span class="btnpad"><input name="pork" type="radio" v-on:click="menu_is_pork = 1"><label for="x06">Yes </label></span >
+                                <span class="btnpad"><input name="pork" type="radio" v-on:click="menu_is_pork = -1"> <label for="x06">No </label></span >
+                                <span class="btnpad"><input name="pork" type="radio" v-on:click="menu_is_pork = 0" checked="checked"> <label for="x06">Don't care</label></span >
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <div class="container">
-                <div class="half"><input type="checkbox"> <label for="x06">Vegan </label></div>
-                <div class="half"><input type="checkbox"> <label for="x06">Pork </label></div>
-            </div>
-            <div class="container">
-                <div class="half"><input type="checkbox"> <label for="x06">Beef </label></div>
-                <div class="half"><input type="checkbox"> <label for="x06">Halal </label></div>
-            </div>
+                    <div class="accordion half align">
+                            <input type="checkbox" id="x18">
+                            <label for="x18"><a>Halal</a></label>
+                            <div class = container>
+                                <div class=""><span class="btnpad"><input name="halal" type="radio" v-on:click="menu_is_halal = 1"><label for="x06">Yes </label></span >
+                                    <span class="btnpad"><input name="halal" type="radio" v-on:click="menu_is_halal = -1"> <label for="x06">No </label></span >
+                                    <span class="btnpad"><input name="halal" type="radio" v-on:click="menu_is_halal = 0" checked="checked"> <label for="x06">Don't care</label></span >
+                                </div>
+                            </div>
+                    
+                    </div>
+                    <div class="accordion half align">
+                        <input type="checkbox" id="x19">
+                        <label for="x19"><a>Beef</a></label>
+                        <div class = container>
+                            <div class=""><span class="btnpad"><input name="beef" type="radio" v-on:click="menu_is_beef = 1"><label for="x06">Yes </label></span >
+                                <span class="btnpad"><input name="beef" type="radio" v-on:click="menu_is_beef = -1"> <label for="x06">No </label></span >
+                                <span class="btnpad"><input name="beef" type="radio" v-on:click="menu_is_beef = 0" checked="checked"> <label for="x06">Don't care</label></span >
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-        <div class="half">
-        <div class="white">
-            <center><h6>Exclude</h6></center>
-            <div class="filteroptions">
-            <div class="container">
-                <div class="half"><input type="checkbox"> <label for="x06">Eggs </label></div>
-                <div class="half"><input type="checkbox"> <label for="x06">Fish </label></div>
-            </div>
-            <div class="container">
-                <div class="half"><input type="checkbox"> <label for="x07">Gluten Free </label></div>
-                <div class="half"><input type="checkbox"> <label for="x08">Nuts </label></div>
-            </div>
-            <div class="container">
-                <div class="half"><input type="checkbox"> <label for="x09">Soy </label></div>
-                <div class="half"><input type="checkbox"> <label for="x06">Vegetarian </label></div>
-            </div>
-            <div class="container">
-                <div class="half"><input type="checkbox"> <label for="x06">Vegan </label></div>
-                <div class="half"><input type="checkbox"> <label for="x06">Pork </label></div>
-            </div>
-            <div class="container">
-                <div class="half"><input type="checkbox"> <label for="x06">Beef </label></div>
-                <div class="half"><input type="checkbox"> <label for="x06">Halal </label></div>
-            </div>
-            </div>
-        </div>
-        </div>
+        
       </div>
     </div>
     </div>
@@ -98,6 +166,7 @@
     <a class="btn teal btn-primary" v-if='carson_oakes' v-on:click='carson_oakes = !carson_oakes'><p class="buttonsize">Carson/Oakes</p></a>
   </div>
   </center>
+  
 </div>
 
 

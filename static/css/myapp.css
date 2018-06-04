@@ -29,3 +29,11 @@
     display: block;
     margin: 0 auto;
 }
+
+.align {
+    display: inline-block;
+}
+
+.btnpad {
+    padding: 10px;
+}
