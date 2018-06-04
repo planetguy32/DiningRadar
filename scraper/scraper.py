@@ -132,8 +132,7 @@ def get_menu(date, locationName):
             for word in final_word:
                 if word in stripped_words:
                     food_items_end = stripped_words.index(final_word)
-                else:
-                    raise ValueError("Could not find meals")
+                    break
             # Constructs a list of all food items but also includes random nutrition_info words which we have to clean up
             food_items_dirty = stripped_words[food_items_begin:food_items_end]
 
