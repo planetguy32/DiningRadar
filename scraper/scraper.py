@@ -236,7 +236,7 @@ def scrape_to_db(start, end):
                     db.available_food.insert(
                         food_id = id,
                         food_location = location,
-                        food_date = time_object,
+                        food_date = days_ahead,
                         food_meal = meal
                     )
             #TODO put in DB

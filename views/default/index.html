@@ -11,13 +11,18 @@
 
 <div id="vue-div" class="display:none">
   <form @submit.prevent="menu_search">
-  <div class="container" >
+
+      <div class="radar center">
+        <img src="{{=URL('static', 'images/diningradar.png')}}" alt="Dining Radar logo" style="max-height: 300px; height: 70%; width:auto;">
+      </div>
       
       <div class = "searchbar">
         <input v-model="form_food" placeholder="Search..." type="text" class="fill">
       </div>
 
-    <div class="accordion foodfilter">
+
+<div class="foodfilter">
+    <div class="accordion">
       <input type="checkbox" id="x04">
       <label for="x04"><a>Diet Options</a></label>
       <div class="container">
@@ -77,10 +82,10 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
   </form>
-  
-  <div style="padding:50px">
+  <center>
+  <div style="padding:50px" class="buttonarea">
     <a class="btn navy btn-primary" v-if='!cowell_stevenson' v-on:click='cowell_stevenson = !cowell_stevenson'><p class="buttonsize">Cowell/Stevenson</p></a>
     <a class="btn teal btn-primary" v-if='cowell_stevenson' v-on:click='cowell_stevenson = !cowell_stevenson'><p class="buttonsize">Cowell/Stevenson</p></a>
     <a class="btn navy btn-primary" v-if='!crown_merrill' v-on:click='crown_merrill = !crown_merrill'><p class="buttonsize">Crown/Merrill</p></a>
@@ -92,6 +97,7 @@
     <a class="btn navy btn-primary" v-if='!carson_oakes' v-on:click='carson_oakes = !carson_oakes'><p class="buttonsize">Carson/Oakes</p></a>
     <a class="btn teal btn-primary" v-if='carson_oakes' v-on:click='carson_oakes = !carson_oakes'><p class="buttonsize">Carson/Oakes</p></a>
   </div>
+  </center>
 </div>
 
 
