@@ -32,8 +32,12 @@ var app = function() {
 				menu_is_pork:  self.vue.menu_is_pork,
 				menu_is_beef:  self.vue.menu_is_beef,
 				menu_is_halal:  self.vue.menu_is_halal,
+				nine_ten: self.vue.nine_ten,
+				cowell_stevenson: self.vue.cowell_stevenson,
+				crown_merrill: self.vue.crown_merrill,
+				porter_kresge: self.vue.porter_kresge,
+				carson_oakes: self.vue.carson_oakes
 				
-
             },
             function (data) {
                 self.vue.menus = data.results;

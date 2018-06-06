@@ -31,8 +31,8 @@ def search():
             'nine_ten': "Colleges Nine and Ten Dining Hall" }
     subQuery = None
     for hall, realName in possible_dining_halls.iteritems():
-        if hall in request.vars:
-            print("Requested dining hall: "+hall)
+        if request.vars[hall] == 'true':
+            print("Requested dining hall: "+ request.vars[hall])
             a=(db.available_food.food_location == realName)
             if subQuery == None:
                 subQuery=a

@@ -154,20 +154,20 @@
   </form>
   <center>
   <div style="padding:50px" class="buttonarea">
-    <a class="btn navy btn-primary" v-if='!cowell_stevenson' v-on:click='cowell_stevenson = !cowell_stevenson'><p class="buttonsize">Cowell/Stevenson</p></a>
-    <a class="btn teal btn-primary" v-if='cowell_stevenson' v-on:click='cowell_stevenson = !cowell_stevenson'><p class="buttonsize">Cowell/Stevenson</p></a>
-    <a class="btn navy btn-primary" v-if='!crown_merrill' v-on:click='crown_merrill = !crown_merrill'><p class="buttonsize">Crown/Merrill</p></a>
-    <a class="btn teal btn-primary" v-if='crown_merrill' v-on:click='crown_merrill = !crown_merrill'><p class="buttonsize">Crown/Merrill</p></a>
-    <a class="btn navy btn-primary" v-if='!nine_ten' v-on:click='nine_ten = !nine_ten'><p class="buttonsize">9/10</p></a>
-    <a class="btn teal btn-primary" v-if='nine_ten' v-on:click='nine_ten = !nine_ten'><p class="buttonsize">9/10</p></a>
-    <a class="btn navy btn-primary" v-if='!porter_kresge' v-on:click='porter_kresge = !porter_kresge'><p class="buttonsize">Porter/Kresge</p></a>
-    <a class="btn teal btn-primary" v-if='porter_kresge' v-on:click='porter_kresge = !porter_kresge'><p class="buttonsize">Porter/Kresge</p></a>
-    <a class="btn navy btn-primary" v-if='!carson_oakes' v-on:click='carson_oakes = !carson_oakes'><p class="buttonsize">Carson/Oakes</p></a>
-    <a class="btn teal btn-primary" v-if='carson_oakes' v-on:click='carson_oakes = !carson_oakes'><p class="buttonsize">Carson/Oakes</p></a>
+    <a class="btn navy btn-primary" v-if='!cowell_stevenson' v-on:click='cowell_stevenson = !cowell_stevenson; menu_search()'><p class="buttonsize">Cowell/Stevenson</p></a>
+    <a class="btn teal btn-primary" v-if='cowell_stevenson' v-on:click='cowell_stevenson = !cowell_stevenson; menu_search()'><p class="buttonsize">Cowell/Stevenson</p></a>
+    <a class="btn navy btn-primary" v-if='!crown_merrill' v-on:click='crown_merrill = !crown_merrill; menu_search()'><p class="buttonsize">Crown/Merrill</p></a>
+    <a class="btn teal btn-primary" v-if='crown_merrill' v-on:click='crown_merrill = !crown_merrill; menu_search()'><p class="buttonsize">Crown/Merrill</p></a>
+    <a class="btn navy btn-primary" v-if='!nine_ten' v-on:click='nine_ten = !nine_ten; menu_search()'><p class="buttonsize">9/10</p></a>
+    <a class="btn teal btn-primary" v-if='nine_ten' v-on:click='nine_ten = !nine_ten; menu_search()'><p class="buttonsize">9/10</p></a>
+    <a class="btn navy btn-primary" v-if='!porter_kresge' v-on:click='porter_kresge = !porter_kresge; menu_search()'><p class="buttonsize">Porter/Kresge</p></a>
+    <a class="btn teal btn-primary" v-if='porter_kresge' v-on:click='porter_kresge = !porter_kresge; menu_search()'><p class="buttonsize">Porter/Kresge</p></a>
+    <a class="btn navy btn-primary" v-if='!carson_oakes' v-on:click='carson_oakes = !carson_oakes; menu_search()'><p class="buttonsize">Carson/Oakes</p></a>
+    <a class="btn teal btn-primary" v-if='carson_oakes' v-on:click='carson_oakes = !carson_oakes; menu_search()'><p class="buttonsize">Carson/Oakes</p></a>
   </div>
   </center>
   <div class="menu_area" v-for="menu_item in menus">
-    ${menu_item.name}
+    ${menu_item.name} ${menu_item.hall}
   </div>
 </div>
 
