@@ -99,7 +99,6 @@ def add_preferences(items_dict, soup):
 #   Rachel Carson Oakes Dining Hall
 #   Colleges Nine and Ten Dining Hall
 # Returns a dictionary -- key = menu time, value = list of menu items available at time
-
 def get_menu(date, locationName):
     locationNum = get_location_num(locationName)
     if locationNum == "-1":
@@ -114,25 +113,35 @@ def get_menu(date, locationName):
         for string in soup.stripped_strings:
             stripped_words.append(string)
 
+
         # The final_word is the entry after the last food item
         final_word = ["The nutrient composition of food may vary due to genetic, " 
                       "environmental and processing variables; changes in product " 
                       "formulation, manufacturer's data, cooking and preparation techniques. " 
                       "The information provided in these labels should be considered " 
                       "as approximations of the nutritional analysis of the food.",
-                      "Information is based on availability and subject to change. " 
+                      "Information is based on availability and subject to change.  " 
                       "The nutrient composition of food may vary due to genetic, " 
                       "environmental and processing variables; changes in product " 
                       "formulation, manufacturer's data, cooking and preparation " 
                       "techniques. The information provided in these labels should " 
                       "be considered as approximations of the nutritional analysis of the food."]
         try:
-            food_items_begin = stripped_words.index('Breakfast')
+            food_items_begin = None
             food_items_end = None
+            section_names = ['Breakfast', 'Lunch', 'Dinner', 'Late Night']
+            for i in range(len(section_names)):
+                if section_names[i] in stripped_words:
+                    food_items_begin = stripped_words.index(section_names[i])
+                    break
+
             for word in final_word:
                 if word in stripped_words:
-                    food_items_end = stripped_words.index(final_word)
+                    food_items_end = stripped_words.index(word)
                     break
+
+            if food_items_begin == None  or food_items_end == None:
+                raise ValueError
             # Constructs a list of all food items but also includes random nutrition_info words which we have to clean up
             food_items_dirty = stripped_words[food_items_begin:food_items_end]
 
