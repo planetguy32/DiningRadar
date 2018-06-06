@@ -18,11 +18,22 @@ var app = function() {
 		//match the college value to the database college location
 		//after the match take the menu data from that college
 		//Then match the search texts with the database menu
-
         //Need to add
 		$.post(menu_search,
             {
-                food_name: self.vue.form_food
+				food_name: self.vue.form_food,
+				menu_is_eggs: self.vue.menu_is_eggs,
+				menu_is_fish: self.vue.menu_is_fish,
+				menu_is_gluten_free: self.vue.menu_is_gluten_free,
+				menu_is_nuts: self.vue.menu_is_nuts,
+				menu_is_soy:  self.vue.menu_is_soy,
+				menu_is_vegan:  self.vue.menu_is_vegan,
+				menu_is_vegetarian:  self.vue.menu_is_vegetarian,
+				menu_is_pork:  self.vue.menu_is_pork,
+				menu_is_beef:  self.vue.menu_is_beef,
+				menu_is_halal:  self.vue.menu_is_halal,
+				
+
             },
             function (data) {
                 self.vue.menus = data.results;
@@ -72,7 +83,7 @@ var app = function() {
 		else if(filter ==="menu_is_halal") {
 			self.vue.menu_is_halal = !self.vue.menu_is_halal;
 		}
-
+		self.menu_search();
 		/*ideally sends the filter name specification for the api to do it work. 
 		$.post(filter_url,
             {
@@ -103,7 +114,7 @@ var app = function() {
             menu_is_vegetarian: 0,
             menu_is_pork: 0,
             menu_is_beef: 0,
-            menu_is_halal: 0
+            menu_is_halal: 0	
         },
         methods: {
 			menu_search: self.menu_search,

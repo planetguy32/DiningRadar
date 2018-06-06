@@ -17,8 +17,10 @@ def search():
     for s in possible_dietary_restrictions:
         s="menu_is_"+s
         if s in request.vars:
-            query = query & (db.menu_item[s] == (request.vars[s] == "T"))
-
+            if(request.vars[s] == "1"):
+                query = query & (db.menu_item[s] != (request.vars[s] == 1))
+            elif(request.vars[s] == "-1"):
+                query = query & (db.menu_item[s] == (request.vars[s] == -1))
 
     #Filter by dining hall locations
     possible_dining_halls = {
