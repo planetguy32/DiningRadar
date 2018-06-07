@@ -4,6 +4,8 @@ var app = function() {
 
     var self = {};
 
+    self.last_search = 0;
+
     Vue.config.silent = false; // show all warnings
 
     // Extends an array
@@ -19,6 +21,8 @@ var app = function() {
 		//after the match take the menu data from that college
 		//Then match the search texts with the database menu
         //Need to add
+		self.last_search ++;
+		const last_search_snapshot = self.last_search;
 		$.post(menu_search,
             {
 				food_name: self.vue.form_food,
@@ -40,7 +44,8 @@ var app = function() {
 				
             },
             function (data) {
-                self.vue.menus = data.results;
+                if(last_search_snapshot === self.last_search)
+                    self.vue.menus = data.results;
             }
          )
 

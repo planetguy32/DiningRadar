@@ -4,8 +4,16 @@
 <link rel="stylesheet" href="{{=URL('static','css/stupid.css')}}"/> 
 <link rel="stylesheet" href="{{=URL('static','css/myapp.css')}}"/>
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script src="{{=URL('static', 'js/tsorter.js')}}" type="text/javascript"></script>
 <script>
     var menu_search = "{{=URL('api', 'search')}}";
+
+//Add table sorter
+window.onload = function () {
+    var sorter = tsorter.create('the-menu-table');
+}
+
+
 </script>
 {{end}}
 
@@ -17,7 +25,7 @@
       </div>
       
       <div class = "searchbar">
-        <input v-model="form_food" placeholder="Search..." type="text" class="fill" v-on:keyup="menu_search()">
+        <input v-model="form_food" placeholder="Search..." type="text" class="fill" v-on:change="menu_search()">
       </div>
 
 
@@ -177,22 +185,17 @@
             </div>
         </div>
   </div> -->
-  <table class="center fill">
+  <table class="center fill sortable" id="the-menu-table">
     <thead>
-        <tr><td></td><th>Time</th><th>Location</th><th>Days until served</th></tr>
+        <tr>
+          <th data-tsorter="link">Description</th>
+          <th data-tsorter="link">Time</th>
+          <th>Location</th>
+          <th data-tsorter="numeric">Days until served</th></tr>
 
     </thead>
-    <tbody v-for="menu_item in menus">
-        <tr v-if="menu_item.meal == 'Breakfast'"><th><a href="#nutrition">${menu_item.name} </a></th><td> <a href="#nutrition">${menu_item.meal} </a></td><td>${menu_item.hall}  </td><td>${menu_item.time_to}</td></tr> 
-    </tbody>
-    <tbody v-for="menu_item in menus">
-        <tr v-if="menu_item.meal == 'Lunch'"><th>${menu_item.name}</th><td>${menu_item.meal}</td><td>${menu_item.hall}  </td><td>${menu_item.time_to}</td></tr>
-    </tbody>
-    <tbody v-for="menu_item in menus">
-        <tr v-if="menu_item.meal == 'Dinner'"><th>${menu_item.name}</th><td>${menu_item.meal}</td><td>${menu_item.hall}  </td><td>${menu_item.time_to}</td></tr>
-    </tbody>
-    <tbody v-for="menu_item in menus">
-        <tr v-if="menu_item.meal == 'Late Night'"><th>${menu_item.name}</th><td>${menu_item.meal}</td><td>${menu_item.hall}  </td><td>${menu_item.time_to}</td></tr>
+    <tbody>
+        <tr v-for="menu_item in menus"><th><a href="#nutrition">${menu_item.name} </a></th><td> <a href="#nutrition">${menu_item.meal} </a></td><td>${menu_item.hall}  </td><td>${menu_item.time_to}</td></tr> 
     </tbody>
 </table>
      
