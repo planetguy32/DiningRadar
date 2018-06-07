@@ -166,11 +166,48 @@
     <a class="btn teal btn-primary" v-if='carson_oakes' v-on:click='carson_oakes = !carson_oakes; menu_search()'><p class="buttonsize">Carson/Oakes</p></a>
   </div>
   </center>
-  <div class="menu_area" v-for="menu_item in menus">
-    ${menu_item.name} ${menu_item.hall}
-  </div>
+  <!-- francis - do not think we should use cards cause they seem to have issues. could have implemented wrong 
+  <div class="card" v-for="menu_item in menus">
+        <div>
+            <div class="white padded rounded">
+                ${menu_item.name} ${menu_item.meal}${menu_item.hall}  ${menu_item.time_to} 
+            </div>
+            <div class="black padded rounded">
+                Nutrition facts
+            </div>
+        </div>
+  </div> -->
+  <table class="center fill">
+    <thead>
+        <tr><td></td><th>Time</th><th>Location</th><th>Days until served</th></tr>
+
+    </thead>
+    <tbody v-for="menu_item in menus">
+        <tr v-if="menu_item.meal == 'Breakfast'"><th><a href="#nutrition">${menu_item.name} </a></th><td> <a href="#nutrition">${menu_item.meal} </a></td><td>${menu_item.hall}  </td><td>${menu_item.time_to}</td></tr> 
+    </tbody>
+    <tbody v-for="menu_item in menus">
+        <tr v-if="menu_item.meal == 'Lunch'"><th>${menu_item.name}</th><td>${menu_item.meal}</td><td>${menu_item.hall}  </td><td>${menu_item.time_to}</td></tr>
+    </tbody>
+    <tbody v-for="menu_item in menus">
+        <tr v-if="menu_item.meal == 'Dinner'"><th>${menu_item.name}</th><td>${menu_item.meal}</td><td>${menu_item.hall}  </td><td>${menu_item.time_to}</td></tr>
+    </tbody>
+    <tbody v-for="menu_item in menus">
+        <tr v-if="menu_item.meal == 'Late Night'"><th>${menu_item.name}</th><td>${menu_item.meal}</td><td>${menu_item.hall}  </td><td>${menu_item.time_to}</td></tr>
+    </tbody>
+</table>
+     
+ 
 </div>
 
-
+ <div class="modal" id="nutrition">
+    <div class="twothirds rounded white padded">
+        <h2>Hello from modal</h2>
+        <a class="close" href="#">×</a>
+        {content}
+        <div class="right">
+        <a class="close btn" href="#">close</a>
+        </div>
+    </div>
+</div>
 
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>

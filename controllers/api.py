@@ -50,12 +50,14 @@ def search():
             start_date = int(request.vars["earliest_day_offset"])
         query=query & (db.available_food.food_date <= end_date) & (db.available_food.food_date >= start_date)
 
-
+    
     selection=db(query).select(
                 db.menu_item.menu_name
               , db.available_food.food_location
               , db.available_food.food_meal
               , db.available_food.food_date
+              , orderby=(db.available_food.food_location, db.available_food.food_date, db.available_food.food_meal)
+    #could be useful, label food on page w/ their allergens          , db.menu_item.menu_is_eggs
               )
     results=[]
     for a in selection:
