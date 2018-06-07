@@ -245,8 +245,8 @@ input:invalid, input.error, textarea:invalid, textarea.error {background: #ffdfd
 
 /**** underline effect ***/
 a:not(.btn):not(.noeffect) {position:relative}
-a:not(.btn):not(.noeffect):hover {color:#26a69a}
-a:not(.btn):not(.noeffect):hover:after {width:100%}
+a:not(.btn):not(.noeffect):not(.menu_row):hover {color:#26a69a}
+a:not(.btn):not(.noeffect):not(.menu_row):hover:after {width:100%}
 a:not(.btn):not(.noeffect):after {
   display:block;
   position:absolute;

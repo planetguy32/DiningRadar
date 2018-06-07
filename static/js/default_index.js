@@ -100,6 +100,10 @@ var app = function() {
             },
 			*/
 	}
+
+	Vue.component('modal', {
+		template: '#modal-template'
+	  });
 	
     // Complete as needed.
     self.vue = new Vue({
@@ -108,6 +112,7 @@ var app = function() {
         unsafeDelimiters: ['!{', '}'],
         data: {
 			menus: [],
+			possible_meals: ["Breakfast", "Lunch", "Dinner", "Late Night"],
 			nine_ten: false,
 			cowell_stevenson: false,
 			crown_merrill: false,
@@ -123,7 +128,8 @@ var app = function() {
             menu_is_vegetarian: 0,
             menu_is_pork: 0,
             menu_is_beef: 0,
-            menu_is_halal: 0	
+			menu_is_halal: 0,
+			showModal: false
         },
         methods: {
 			menu_search: self.menu_search,

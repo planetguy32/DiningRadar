@@ -50,13 +50,18 @@ def search():
             start_date = int(request.vars["earliest_day_offset"])
         query=query & (db.available_food.food_date <= end_date) & (db.available_food.food_date >= start_date)
 
-    
+    #order by specific values https://stackoverflow.com/questions/6332043/sql-order-by-multiple-values-in-specific-order
     selection=db(query).select(
                 db.menu_item.menu_name
               , db.available_food.food_location
               , db.available_food.food_meal
               , db.available_food.food_date
-              , orderby=(db.available_food.food_location, db.available_food.food_date, db.available_food.food_meal)
+              , orderby=(db.available_food.food_location
+                        , db.available_food.food_date
+                        , db.available_food.food_meal == 'Late Night'
+                        , db.available_food.food_meal == 'Dinner'
+                        , db.available_food.food_meal == 'Lunch'
+                        , db.available_food.food_meal == 'Breakfast')
     #could be useful, label food on page w/ their allergens          , db.menu_item.menu_is_eggs
               )
     results=[]
