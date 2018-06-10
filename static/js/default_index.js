@@ -141,6 +141,10 @@ var app = function() {
                 var id = allergy + data_from_json[allergy];
                 $("#" + id).prop('checked', true);
             }
+            if (data_from_json[allergy] == 0) {
+                var id = allergy + 0;
+                $("#" + id).prop('checked', true);
+            }
         }
 
 		Object.assign(self.vue, data_from_json);
