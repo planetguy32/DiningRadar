@@ -122,3 +122,19 @@ td, th {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+.xcolor {
+    width: 80%;
+    background-color: #ff3333;
+    font-weight: bold;
+}
+
+.gcolor {
+    width: 80%;
+    background-color: #47d147;
+    font-weight: bold;
+}
+
+.savepad {
+    padding-top: 3px;
+}

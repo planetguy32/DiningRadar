@@ -67,18 +67,22 @@ window.onload = function () {
         
 
 {{if auth.user is not None:}}
-      <div id="saved_searches" class="accordion foodfilter">
+      <div class="foodfilter">
+      <div class="savepad"><a class="btn" v-on:click="save_search()">Save current search</a></div>
+      <div id="saved_searches" class="accordion">
           <input type="checkbox" id="x236">
           <label for="x236"><a>Favourite Searches</a></label>
 
           <div>
-          <a class="btn" v-on:click="save_search()">Save current search</a>
 
           <div v-for="search in saved_searches">
-              <a class="btn" v-on:click="run_search(search.search_url)">${JSON.parse(search.search_url).form_food}</a>
-              <a class="btn" v-on:click="delete_search(search.id)">Delete</a>
+              <div class="container">
+                  <span class="quarter"><a class="btn gcolor" v-on:click="run_search(search.search_url)">${JSON.parse(search.search_url).form_food}</a></span>
+                  <span class="quarter"><a class="btn xcolor" v-on:click="delete_search(search.id)"><i class="fa fa-trash"></i></a></span>
+              </div>
           </div>
           </div>
+      </div>
       </div>
 {{pass}}
 
