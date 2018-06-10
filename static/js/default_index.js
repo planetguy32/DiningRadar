@@ -127,6 +127,22 @@ var app = function() {
 
 	self.run_search = function(search_str) {
 		const data_from_json=JSON.parse(search_str);
+        var food_allergies = ["menu_is_eggs", "menu_is_fish", "menu_is_gluten_free",
+                              "menu_is_nuts", "menu_is_soy", "menu_is_vegan", "menu_is_vegetarian",
+                              "menu_is_pork", "menu_is_beef", "menu_is_halal"];
+
+        for (var i = 0; i < food_allergies.length; i++) {
+            var allergy = food_allergies[i];
+            if (data_from_json[allergy]) {
+                for (var j = -1; j < 2; j++) {
+                    var id = allergy + j;
+                    $("#" + id).prop('checked', false);
+                }
+                var id = allergy + data_from_json[allergy];
+                $("#" + id).prop('checked', true);
+            }
+        }
+
 		Object.assign(self.vue, data_from_json);
 		self.menu_search();
 	}
@@ -137,7 +153,7 @@ var app = function() {
 			function(response) {
 				for(var i=0; i<self.vue.saved_searches.length; i++){
 					if(self.vue.saved_searches[i].id == search_id) {
-						self.vue.saved_searches.splice(i, i+1);
+						self.vue.saved_searches.splice(i, 1);
 					}
 				}
 			}

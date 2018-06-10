@@ -101,9 +101,10 @@ window.onload = function () {
                         <input type="checkbox" id="x10">
                         <label for="x10"><a>Eggs</a></label>
                         <div class="container">
-                            <div class=""><span class="btnpad"><input name="eggs" type="radio" v-on:click="menu_is_eggs = 1; menu_search()"><label for="x06">Yes </label></span >
-                                <span class="btnpad"><input name="eggs" type="radio" v-on:click="menu_is_eggs = -1; menu_search()"> <label for="x06">No </label></span >
-                                <span class="btnpad"><input name="eggs" type="radio" v-on:click="menu_is_eggs = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
+                            <div class="">
+                                <span class="btnpad"><input id="menu_is_eggs1" name="eggs" type="radio" v-on:click="menu_is_eggs = 1; menu_search()"><label for="x06">Yes </label></span >
+                                <span class="btnpad"><input id="menu_is_eggs-1" name="eggs" type="radio" v-on:click="menu_is_eggs = -1; menu_search()"> <label for="x06">No </label></span >
+                                <span class="btnpad"><input id="menu_is_eggs0" name="eggs" type="radio" v-on:click="menu_is_eggs = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
                             </div>
                         </div>
                 
@@ -112,9 +113,10 @@ window.onload = function () {
                     <input type="checkbox" id="x11">
                     <label for="x11"><a>Fish</a></label>
                     <div class="container">
-                        <div class=""><span class="btnpad"><input name="fish" type="radio" v-on:click="menu_is_fish = 1; menu_search()"><label for="x06">Yes </label></span >
-                            <span class="btnpad"><input name="fish" type="radio" v-on:click="menu_is_fish = -1; menu_search()"> <label for="x06">No </label></span >
-                            <span class="btnpad"><input name="fish" type="radio" v-on:click="menu_is_fish = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
+                        <div class="">
+                            <span class="btnpad"><input id="menu_is_fish1" name="fish" type="radio" v-on:click="menu_is_fish = 1; menu_search()"><label for="x06">Yes </label></span >
+                            <span class="btnpad"><input id="menu_is_fish-1" name="fish" type="radio" v-on:click="menu_is_fish = -1; menu_search()"> <label for="x06">No </label></span >
+                            <span class="btnpad"><input id="menu_is_fish0" name="fish" type="radio" v-on:click="menu_is_fish = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
                         </div>
                     </div>
                 </div>
@@ -124,9 +126,10 @@ window.onload = function () {
                         <input type="checkbox" id="x12">
                         <label for="x12"><a>Gluten Free</a></label>
                         <div class="container">
-                            <div class=""><span class="btnpad"><input name="Gluten Free" type="radio" v-on:click="menu_is_gluten_free = 1; menu_search()"><label for="x06">Yes </label></span >
-                                <span class="btnpad"><input name="Gluten Free" type="radio" v-on:click="menu_is_gluten_free = -1; menu_search()"> <label for="x06">No </label></span >
-                                <span class="btnpad"><input name="Gluten Free" type="radio" v-on:click="menu_is_gluten_free = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
+                            <div class="">
+                                <span class="btnpad"><input id="menu_is_gluten_free1" name="Gluten Free" type="radio" v-on:click="menu_is_gluten_free = 1; menu_search()"><label for="x06">Yes </label></span >
+                                <span class="btnpad"><input id="menu_is_gluten_free-1" name="Gluten Free" type="radio" v-on:click="menu_is_gluten_free = -1; menu_search()"> <label for="x06">No </label></span >
+                                <span class="btnpad"><input id="menu_is_gluten_free0" name="Gluten Free" type="radio" v-on:click="menu_is_gluten_free = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
                             </div>
                         </div>
                 
@@ -135,9 +138,10 @@ window.onload = function () {
                     <input type="checkbox" id="x13">
                     <label for="x13"><a>Nuts</a></label>
                     <div class="container">
-                        <div class=""><span class="btnpad"><input name="nuts" type="radio" v-on:click="menu_is_nuts = 1; menu_search()"><label for="x06">Yes </label></span >
-                            <span class="btnpad"><input name="nuts" type="radio" v-on:click="menu_is_nuts = -1; menu_search()"> <label for="x06">No </label></span >
-                            <span class="btnpad"><input name="nuts" type="radio" v-on:click="menu_is_nuts = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
+                        <div class="">
+                            <span class="btnpad"><input id="menu_is_nuts1" name="nuts" type="radio" v-on:click="menu_is_nuts = 1; menu_search()"><label for="x06">Yes </label></span >
+                            <span class="btnpad"><input id="menu_is_nuts-1" name="nuts" type="radio" v-on:click="menu_is_nuts = -1; menu_search()"> <label for="x06">No </label></span >
+                            <span class="btnpad"><input id="menu_is_nuts0" name="nuts" type="radio" v-on:click="menu_is_nuts = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
                         </div>
                     </div>
                 </div>
@@ -147,9 +151,10 @@ window.onload = function () {
                         <input type="checkbox" id="x14">
                         <label for="x14"><a>Soy</a></label>
                         <div class="container">
-                            <div class=""><span class="btnpad"><input name="Soy" type="radio" v-on:click="menu_is_soy = 1; menu_search()"><label for="x06">Yes </label></span >
-                                <span class="btnpad"><input name="Soy" type="radio" v-on:click="menu_is_soy = -1; menu_search()"> <label for="x06">No </label></span >
-                                <span class="btnpad"><input name="Soy" type="radio" v-on:click="menu_is_soy = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
+                            <div class="">
+                                <span class="btnpad"><input id="menu_is_soy1" name="Soy" type="radio" v-on:click="menu_is_soy = 1; menu_search()"><label for="x06">Yes </label></span >
+                                <span class="btnpad"><input id="menu_is_soy-1" name="Soy" type="radio" v-on:click="menu_is_soy = -1; menu_search()"> <label for="x06">No </label></span >
+                                <span class="btnpad"><input id="menu_is_soy0" name="Soy" type="radio" v-on:click="menu_is_soy = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
                             </div>
                         </div>
                 
@@ -158,9 +163,10 @@ window.onload = function () {
                     <input type="checkbox" id="x15">
                     <label for="x15"><a>Vegetarian</a></label>
                     <div class="container">
-                        <div class=""><span class="btnpad"><input name="vegetarian" type="radio" v-on:click="menu_is_vegetarian = 1; menu_search()"><label for="x06">Yes </label></span >
-                            <span class="btnpad"><input name="vegetarian" type="radio" v-on:click="menu_is_vegetarian = -1; menu_search()"> <label for="x06">No </label></span >
-                            <span class="btnpad"><input name="vegetarian" type="radio" v-on:click="menu_is_vegetarian = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
+                        <div class="">
+                            <span class="btnpad"><input id="menu_is_vegetarian1" name="vegetarian" type="radio" v-on:click="menu_is_vegetarian = 1; menu_search()"><label for="x06">Yes </label></span >
+                            <span class="btnpad"><input id="menu_is_vegetarian-1" name="vegetarian" type="radio" v-on:click="menu_is_vegetarian = -1; menu_search()"> <label for="x06">No </label></span >
+                            <span class="btnpad"><input id="menu_is_vegetarian0" name="vegetarian" type="radio" v-on:click="menu_is_vegetarian = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
                         </div>
                     </div>
                 </div>
@@ -170,9 +176,10 @@ window.onload = function () {
                             <input type="checkbox" id="x16">
                             <label for="x16"><a>Vegan</a></label>
                             <div class="container">
-                                <div class=""><span class="btnpad"><input name="vegan" type="radio" v-on:click="menu_is_vegan = 1; menu_search()"><label for="x06">Yes </label></span >
-                                    <span class="btnpad"><input name="vegan" type="radio" v-on:click="menu_is_vegan = -1; menu_search()"> <label for="x06">No </label></span >
-                                    <span class="btnpad"><input name="vegan" type="radio" v-on:click="menu_is_vegan = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
+                                <div class="">
+                                    <span class="btnpad"><input id="menu_is_vegan1" name="vegan" type="radio" v-on:click="menu_is_vegan = 1; menu_search()"><label for="x06">Yes </label></span >
+                                    <span class="btnpad"><input id="menu_is_vegan-1" name="vegan" type="radio" v-on:click="menu_is_vegan = -1; menu_search()"> <label for="x06">No </label></span >
+                                    <span class="btnpad"><input id="menu_is_vegan0" name="vegan" type="radio" v-on:click="menu_is_vegan = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
                                 </div>
                             </div>
                     
@@ -181,9 +188,10 @@ window.onload = function () {
                         <input type="checkbox" id="x17">
                         <label for="x17"><a>Pork</a></label>
                         <div class="container">
-                            <div class=""><span class="btnpad"><input name="pork" type="radio" v-on:click="menu_is_pork = 1; menu_search()"><label for="x06">Yes </label></span >
-                                <span class="btnpad"><input name="pork" type="radio" v-on:click="menu_is_pork = -1; menu_search()"> <label for="x06">No </label></span >
-                                <span class="btnpad"><input name="pork" type="radio" v-on:click="menu_is_pork = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
+                            <div class="">
+                                <span class="btnpad"><input id="menu_is_pork1" name="pork" type="radio" v-on:click="menu_is_pork = 1; menu_search()"><label for="x06">Yes </label></span >
+                                <span class="btnpad"><input id="menu_is_pork-1" name="pork" type="radio" v-on:click="menu_is_pork = -1; menu_search()"> <label for="x06">No </label></span >
+                                <span class="btnpad"><input id="menu_is_pork0" name="pork" type="radio" v-on:click="menu_is_pork = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
                             </div>
                         </div>
                     </div>
@@ -193,9 +201,10 @@ window.onload = function () {
                             <input type="checkbox" id="x18">
                             <label for="x18"><a>Halal</a></label>
                             <div class="container">
-                                <div class=""><span class="btnpad"><input name="halal" type="radio" v-on:click="menu_is_halal = 1; menu_search()"><label for="x06">Yes </label></span >
-                                    <span class="btnpad"><input name="halal" type="radio" v-on:click="menu_is_halal = -1; menu_search()"> <label for="x06">No </label></span >
-                                    <span class="btnpad"><input name="halal" type="radio" v-on:click="menu_is_halal = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
+                                <div class="">
+                                    <span class="btnpad"><input id="menu_is_halal1" name="halal" type="radio" v-on:click="menu_is_halal = 1; menu_search()"><label for="x06">Yes </label></span >
+                                    <span class="btnpad"><input id="menu_is_halal-1" name="halal" type="radio" v-on:click="menu_is_halal = -1; menu_search()"> <label for="x06">No </label></span >
+                                    <span class="btnpad"><input id="menu_is_halal0" name="halal" type="radio" v-on:click="menu_is_halal = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
                                 </div>
                             </div>
                     
@@ -204,9 +213,9 @@ window.onload = function () {
                         <input type="checkbox" id="x19">
                         <label for="x19"><a>Beef</a></label>
                         <div class="container">
-                            <div class=""><span class="btnpad"><input name="beef" type="radio" v-on:click="menu_is_beef = 1; menu_search()"><label for="x06">Yes </label></span >
-                                <span class="btnpad"><input name="beef" type="radio" v-on:click="menu_is_beef = -1; menu_search()"> <label for="x06">No </label></span >
-                                <span class="btnpad"><input name="beef" type="radio" v-on:click="menu_is_beef = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
+                            <div class=""><span class="btnpad"><input id="menu_is_beef1" name="beef" type="radio" v-on:click="menu_is_beef = 1; menu_search()"><label for="x06">Yes </label></span >
+                                <span class="btnpad"><input id="menu_is_beef-1" name="beef" type="radio" v-on:click="menu_is_beef = -1; menu_search()"> <label for="x06">No </label></span >
+                                <span class="btnpad"><input id="menu_is_beef0" name="beef" type="radio" v-on:click="menu_is_beef = 0; menu_search()" checked="checked"> <label for="x06">Don't care</label></span >
                             </div>
                         </div>
                     </div>
