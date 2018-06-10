@@ -62,6 +62,7 @@ def search():
                         , db.available_food.food_meal == 'Dinner'
                         , db.available_food.food_meal == 'Lunch'
                         , db.available_food.food_meal == 'Breakfast')
+              , limitby=(0, 100)
     #could be useful, label food on page w/ their allergens          , db.menu_item.menu_is_eggs
               )
     results=[]
