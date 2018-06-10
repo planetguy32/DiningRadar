@@ -21,6 +21,7 @@ var app = function() {
 		//after the match take the menu data from that college
 		//Then match the search texts with the database menu
         //Need to add
+        self.vue.loading = true
 		self.last_search ++;
 		const last_search_snapshot = self.last_search;
 		$.post(menu_search,
@@ -46,8 +47,10 @@ var app = function() {
             function (data) {
                 if(last_search_snapshot === self.last_search)
                     self.vue.menus = data.results;
+                    self.vue.loading = false
             }
          )
+         
 
 	};
 	
@@ -129,7 +132,8 @@ var app = function() {
             menu_is_pork: 0,
             menu_is_beef: 0,
 			menu_is_halal: 0,
-			showModal: false
+			showModal: false,
+            loading: false
         },
         methods: {
 			menu_search: self.menu_search,

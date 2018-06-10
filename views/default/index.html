@@ -55,8 +55,9 @@ window.onload = function () {
       </div>
       
       <div class = "searchbar">
-        <input v-model="form_food" placeholder="Search..." type="text" class="fill" v-on:change="menu_search()">
+        <input v-model="form_food" placeholder="Search..." type="text" class="" v-on:change="menu_search()">
       </div>
+        
 
 
 <div class="foodfilter">
@@ -215,16 +216,18 @@ window.onload = function () {
             </div>
         </div>
   </div> -->
-  <div v-for="meal in possible_meals">
+  <center>
+  <i v-if="loading" class="fa fa-spinner fa-pulse fa-5x"></i></center>
+  <div v-if="!loading" v-for="meal in possible_meals">
       <h3 class="table_meal">${meal}</h3>
   <table class="center fill sortable" id="the-menu-table">
     <thead>
         
         <tr>
-          <th data-tsorter="link">Description</th>
+          <th data-tsorter="link" class="third"><h4>Description</h4></th>
           <!-- <th data-tsorter="link">Time</th> -->
-          <th>Location</th>
-          <th data-tsorter="numeric">Days until served</th></tr>
+          <th class="third"><h4>Location</h4></th>
+          <th data-tsorter="numeric" class="third"><h4>Days until served</h4></th></tr>
 
     </thead>
     <tbody>
