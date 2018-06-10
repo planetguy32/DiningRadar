@@ -128,6 +128,7 @@ var app = function() {
 	self.run_search = function(search_str) {
 		const data_from_json=JSON.parse(search_str);
 		Object.assign(self.vue, data_from_json);
+		self.menu_search();
 	}
 
 	self.delete_search = function(search_id) {
