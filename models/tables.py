@@ -16,6 +16,9 @@ import time
 import exceptions
 
 
+#This is used in templates
+import json
+
 def get_user_email():
     return auth.user.email if auth.user is not None else None
 
@@ -47,3 +50,14 @@ db.define_table('saved_searches',
                 Field('search_owner', type="reference auth_user"),
                 Field('search_url')
                 )
+
+
+#This is a crazy hack
+def get_searches():
+    logged_in = auth.user_id is not None
+    searches = db(db.saved_searches.search_owner == auth.user_id).select(db.saved_searches.search_url, db.saved_searches.id)
+    urls=[]
+    for s in searches:
+        urls.append({'search_url': s.search_url, 'id': s.id})
+    return json.dumps(urls)
+

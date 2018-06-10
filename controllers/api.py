@@ -83,7 +83,7 @@ def add_search():
         search_owner=auth.user_id,
         search_url=request.vars.search_url
     )
-    t = db.notes(t_id)
+    t = db.saved_searches(t_id)
     return response.json(dict(note=t))
 
 @auth.requires_login()
@@ -100,9 +100,8 @@ def get_searches():
 @auth.requires_login()
 @auth.requires_signature()
 def remove_search():
-    selection=db(db.saved_searches.id == request.vars.id)
-    first=selection.select().first()
-    if(first <> None and first.search_owner == auth.user_id):
-        selection.delete()
-    return "ok"
+    selection=db( (db.saved_searches.id == request.vars.search_id) & (db.saved_searches.search_owner == auth.user_id) )
+    results = selection.count()
+    selection.delete()
+    return str(request.vars.search_id)
 

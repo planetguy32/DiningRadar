@@ -8,12 +8,19 @@
 <script>
     var menu_search = "{{=URL('api', 'search')}}";
 
+    const URL_ADD_SEARCH = "{{=URL('api', 'add_search', user_signature=True)}}";
+    const URL_GET_SEARCHES = "{{=URL('api', 'get_searches', user_signature=True)}}";
+    const URL_REMOVE_SEARCH = "{{=URL('api', 'remove_search', user_signature=True)}}";
 
 //Add table sorter
 window.onload = function () {
     var sorter = tsorter.create('the-menu-table');
 }
+
+    const test="{{=XML('foo')}}"
 </script>
+
+
 <script type="text/x-template" id="modal-template">
     <transition name="modal">
         <div class="modal-mask">
@@ -53,10 +60,26 @@ window.onload = function () {
       <div class="radar center">
         <img src="{{=URL('static', 'images/diningradar.png')}}" alt="Dining Radar logo" style="max-height: 300px; height: 70%; width:auto;">
       </div>
-      
+
       <div class = "searchbar">
         <input v-model="form_food" placeholder="Search..." type="text" class="fill" v-on:change="menu_search()">
       </div>
+
+{{if auth.user is not None:}}
+      <div id="saved_searches" class="accordion foodfilter">
+          <input type="checkbox" id="x236">
+          <label for="x236"><a>Favourite Searches</a></label>
+
+          <div>
+          <a class="btn" v-on:click="save_search()">Save current search</a>
+
+          <div v-for="search in saved_searches">
+              <a class="btn" v-on:click="run_search(search.search_url)">${JSON.parse(search.search_url).form_food}</a>
+              <a class="btn" v-on:click="delete_search(search.id)">Delete</a>
+          </div>
+          </div>
+      </div>
+{{pass}}
 
 
 <div class="foodfilter">
@@ -263,5 +286,9 @@ window.onload = function () {
  
 </div>
 
+<script>
+    const SAVED_SEARCHES = JSON.parse("{{=XML(get_searches().replace("\\", "\\\\").replace('"', '\\"'))}}");
+</script>
 
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>
+
