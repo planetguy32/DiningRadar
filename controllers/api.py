@@ -56,7 +56,7 @@ def search():
               , db.available_food.food_location
               , db.available_food.food_meal
               , db.available_food.food_date
-              , orderby=(db.available_food.food_location, db.available_food.food_date, db.available_food.food_meal),
+              , orderby=(db.available_food.food_location, db.available_food.food_date, db.available_food.food_meal)
               , limitby=(0, 100)
     #could be useful, label food on page w/ their allergens          , db.menu_item.menu_is_eggs
               )
