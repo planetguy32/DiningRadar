@@ -268,11 +268,11 @@ window.onload = function () {
     <tbody>
         <tr v-for="menu_item in menus" v-if="menu_item.meal == meal">
             <th>
-                <a class="menu_row">${menu_item.name} </a>
+                ${menu_item.name} 
             </th>
             <!--<td> <a class="menu_row" id="show-modal" @click="showModal = true">${menu_item.meal} </a></td> -->
-            <td> <a class="menu_row">${menu_item.hall} </a> </td>
-            <td> <a class="menu_row">${menu_item.time_to} </a></td>
+            <td>${menu_item.hall}  </td>
+            <td> ${menu_item.time_to}</td>
         </tr> 
 
     </tbody>
